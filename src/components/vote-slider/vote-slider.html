@@ -21,7 +21,7 @@
 
 <ion-row margin-top no-padding>
   <ion-col no-margin no-padding>
-    <ion-range mode="md" min="0" max="100" step="2" [(ngModel)]="10*voteValue" (ngModelChange)="voteValue=$event/10"
+    <ion-range mode="md" min="0" max="100" step="1" [(ngModel)]="10*voteValue" (ngModelChange)="voteValue=$event/10"
                (ionBlur)="dupa()">
       <ion-icon size="small" slot="start" name="sunny"></ion-icon>
       <ion-icon slot="end" name="sunny"></ion-icon>
