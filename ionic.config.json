@@ -1,0 +1,7 @@
+{
+  "name": "hotStuff",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
