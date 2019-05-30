@@ -1,0 +1,53 @@
+vote-slider {
+
+  ion-range {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .range-bar {
+    border-radius: 15px;
+    top: 0 !important;
+  }
+
+  .range-bar-active {
+    border-radius: 15px;
+    top: 0 !important;
+    background-image: linear-gradient(to right, #2980b9, #6d78c9, #b166bf, #e64e98, #fd495e) !important;
+    background-size: 350px auto !important;
+  }
+
+  .range-knob-handle {
+    top: 0 !important;
+  }
+
+  .range-knob-min .range-knob {
+    background-color: map_get($colors, cold) !important;
+    border: 2px solid white !important;
+  }
+
+  .range-knob-max .range-knob {
+    background-color: map_get($colors, hot);
+    border: 2px solid white;
+  }
+
+  .vote-circle-wrapper {
+    max-width: 100px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+    .vote-value {
+      position: absolute;
+      top: 50%;
+      font-size: 3rem;
+      left: 0;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      text-align: center;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+}

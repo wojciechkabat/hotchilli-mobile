@@ -1,0 +1,34 @@
+<ion-row>
+  <ion-col></ion-col>
+  <ion-col>
+    <div class="vote-circle-wrapper">
+      <round-progress
+        [current]="voteValue"
+        [max]="10"
+        [color]="resolveCircleColor()"
+        [background]="'#eaeaea'"
+        [rounded]="true"
+        [responsive]="true"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+        [animationDelay]="0">
+      </round-progress>
+      <div class="vote-value">{{voteValue | number : '1.1-1'}}</div>
+    </div>
+  </ion-col>
+  <ion-col></ion-col>
+</ion-row>
+
+<ion-row margin-top no-padding>
+  <ion-col no-margin no-padding>
+    <ion-range mode="md" min="0" max="100" step="2" [(ngModel)]="10*voteValue" (ngModelChange)="voteValue=$event/10"
+               (ionBlur)="dupa()">
+      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+      <ion-icon slot="end" name="sunny"></ion-icon>
+    </ion-range>
+  </ion-col>
+</ion-row>
+
+
+
+
