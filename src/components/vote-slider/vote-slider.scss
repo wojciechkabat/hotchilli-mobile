@@ -1,7 +1,9 @@
 vote-slider {
-
-  ion-range {
+  .range-wrapper {
     max-width: 350px;
+  }
+  ion-range {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -49,5 +51,22 @@ vote-slider {
       width: 100%;
       z-index: 1;
     }
+  }
+
+  ion-icon {
+    font-size: 4.2rem;
+  }
+
+  #snowIcon {
+    position: absolute;
+    top: -4.5rem;
+    left: 1.5rem;
+  }
+
+
+  #fireIcon {
+    position: absolute;
+    top: -4.5rem;
+    right: 1.5rem;
   }
 }

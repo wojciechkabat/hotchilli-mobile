@@ -19,14 +19,16 @@
   <ion-col></ion-col>
 </ion-row>
 
-<ion-row margin-top no-padding>
-  <ion-col no-margin no-padding>
+<ion-row no-padding>
+  <ion-col></ion-col>
+  <ion-col col-12 no-margin no-padding class="range-wrapper">
     <ion-range mode="md" min="0" max="100" step="1" [(ngModel)]="10*voteValue" (ngModelChange)="voteValue=$event/10"
                (ionBlur)="dupa()">
-      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
-      <ion-icon slot="end" name="sunny"></ion-icon>
     </ion-range>
+    <ion-icon name="md-snow" id="snowIcon" color="cold"></ion-icon>
+    <ion-icon name="md-flame" id="fireIcon" color="hot"></ion-icon>
   </ion-col>
+  <ion-col></ion-col>
 </ion-row>
 
 
