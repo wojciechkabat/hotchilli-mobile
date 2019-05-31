@@ -1,36 +1,40 @@
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <div class="vote-circle-wrapper">
-      <round-progress
-        [current]="voteValue"
-        [max]="10"
-        [color]="resolveCircleColor()"
-        [background]="'#eaeaea'"
-        [rounded]="true"
-        [responsive]="true"
-        [duration]="800"
-        [animation]="'easeInOutQuart'"
-        [animationDelay]="0">
-      </round-progress>
-      <div class="vote-value">{{voteValue | number : '1.1-1'}}</div>
-    </div>
-  </ion-col>
-  <ion-col></ion-col>
-</ion-row>
+<div style="height:100%; overflow: hidden">
+  <ion-row>
+    <ion-col class="center-column-content">
+      <ion-icon name="md-snow" color="cold" id="coldIcon" [style.font-size]="getColdIconSizeValueStyle(voteValue)"></ion-icon>
+    </ion-col>
+    <ion-col>
+      <div class="vote-circle-wrapper">
+        <round-progress
+          [current]="voteValue"
+          [max]="10"
+          [stroke]="25"
+          [color]="resolveCircleColor()"
+          [background]="'#eaeaea'"
+          [rounded]="true"
+          [responsive]="true"
+          [duration]="800"
+          [animation]="'easeInOutQuart'"
+          [animationDelay]="0">
+        </round-progress>
+        <div class="vote-value">{{voteValue | number : '1.1-1'}}</div>
+      </div>
+    </ion-col>
+    <ion-col class="center-column-content">
+      <ion-icon name="md-flame" color="hot" id="hotIcon" [style.font-size]="getHotIconSizeValueStyle(voteValue)"></ion-icon>
+    </ion-col>
+  </ion-row>
 
-<ion-row no-padding>
-  <ion-col></ion-col>
-  <ion-col col-12 no-margin no-padding class="range-wrapper">
-    <ion-range mode="md" min="0" max="100" step="1" [(ngModel)]="10*voteValue" (ngModelChange)="voteValue=$event/10"
-               (ionBlur)="dupa()">
-    </ion-range>
-    <ion-icon name="md-snow" id="snowIcon" color="cold"></ion-icon>
-    <ion-icon name="md-flame" id="fireIcon" color="hot"></ion-icon>
-  </ion-col>
-  <ion-col></ion-col>
-</ion-row>
-
+  <ion-row style="margin-top: 5px">
+    <ion-col></ion-col>
+    <ion-col col-12 no-margin no-padding class="range-wrapper">
+      <ion-range mode="md" min="0" max="100" step="1" [(ngModel)]="10*voteValue" (ngModelChange)="sliderChanged($event)"
+                 (ionBlur)="dupa()">
+      </ion-range>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+</div>
 
 
 

@@ -1,3 +1,15 @@
 page-home {
+   .person-card-container {
+    height: calc(100vh - 56px - 150px - 50px); //person card should be full screen minus the bar, minus the voteslider and minus some space
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px
+  }
 
+  .vote-slider-container {
+    height: 150px;
+    width: 100%;
+    position: fixed;
+    bottom: 20px;
+  }
 }

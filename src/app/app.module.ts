@@ -6,14 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { VoteSliderComponent } from "../components/vote-slider/vote-slider";
 import { RoundProgressModule } from "angular-svg-round-progressbar";
+import { VoteSliderComponent } from "../components/vote-slider/vote-slider";
+import { PersonCardComponent } from "../components/person-card/person-card";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    VoteSliderComponent
+    VoteSliderComponent,
+    PersonCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+person-card {
+  ion-card {
+    width: 100% !important;
+    margin: 0 !important;
+    height: 100%;
+
+    img {
+      overflow: hidden;
+      object-fit: cover;
+      height: calc(100% - 50px)
+    }
+
+    ion-card-content {
+      height: 50px;
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+      font-size: 1.9rem !important;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

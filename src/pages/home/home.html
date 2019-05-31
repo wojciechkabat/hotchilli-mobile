@@ -1,13 +1,27 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-buttons left>
+      <button ion-button icon-only>
+        <ion-icon name="md-settings" style="color: #34495e"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title mode="ios">
+      <img style="display:inline-block; vertical-align:middle;" height="25px" src="assets/imgs/logo2.png"/>
+      <div style="display:inline-block; vertical-align:middle; padding-left: 5px">Chilli Hot</div>
     </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="onMenuItemSelected('SettingsPage')">
+        <ion-icon name="md-trophy" color="yellow"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
-  <vote-slider></vote-slider>
-
+<ion-content no-padding>
+  <div class="person-card-container">
+    <person-card></person-card>
+  </div>
+  <div class="vote-slider-container">
+    <vote-slider></vote-slider>
+  </div>
 </ion-content>

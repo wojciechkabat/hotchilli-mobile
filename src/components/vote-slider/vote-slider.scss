@@ -34,7 +34,7 @@ vote-slider {
   }
 
   .vote-circle-wrapper {
-    max-width: 100px;
+    max-width: 85px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -43,7 +43,7 @@ vote-slider {
     .vote-value {
       position: absolute;
       top: 50%;
-      font-size: 3rem;
+      font-size: 2.6rem;
       left: 0;
       transform: translateY(-50%);
       -webkit-transform: translateY(-50%);
@@ -51,22 +51,5 @@ vote-slider {
       width: 100%;
       z-index: 1;
     }
-  }
-
-  ion-icon {
-    font-size: 4.2rem;
-  }
-
-  #snowIcon {
-    position: absolute;
-    top: -4.5rem;
-    left: 1.5rem;
-  }
-
-
-  #fireIcon {
-    position: absolute;
-    top: -4.5rem;
-    right: 1.5rem;
   }
 }
