@@ -1,7 +1,13 @@
 <div style="height:100%; overflow: hidden">
   <ion-row>
     <ion-col class="center-column-content">
-      <ion-icon name="md-snow" color="cold" id="coldIcon" [style.font-size]="getColdIconSizeValueStyle(voteValue)"></ion-icon>
+      <ion-icon
+        name="md-snow"
+        color="cold"
+        id="coldIcon"
+        [ngClass]="{'wiggle-anim': voteValue === 0}"
+        [style.font-size]="getColdIconSizeValueStyle(voteValue)">
+      </ion-icon>
     </ion-col>
     <ion-col>
       <div class="vote-circle-wrapper">
@@ -21,7 +27,13 @@
       </div>
     </ion-col>
     <ion-col class="center-column-content">
-      <ion-icon name="md-flame" color="hot" id="hotIcon" [style.font-size]="getHotIconSizeValueStyle(voteValue)"></ion-icon>
+      <ion-icon
+        name="md-flame"
+        color="hot"
+        id="hotIcon"
+        [ngClass]="{'wiggle-anim': voteValue === 10}"
+        [style.font-size]="getHotIconSizeValueStyle(voteValue)">
+      </ion-icon>
     </ion-col>
   </ion-row>
 

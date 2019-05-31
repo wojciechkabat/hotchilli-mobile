@@ -1,6 +1,6 @@
 vote-slider {
   .range-wrapper {
-    max-width: 350px;
+    max-width: 320px;
   }
   ion-range {
     width: 100%;
@@ -16,7 +16,7 @@ vote-slider {
     border-radius: 15px;
     top: 0 !important;
     background-image: linear-gradient(to right, #2980b9, #6d78c9, #b166bf, #e64e98, #fd495e) !important;
-    background-size: 350px auto !important;
+    background-size: 320px auto !important;
   }
 
   .range-knob-handle {
@@ -51,5 +51,18 @@ vote-slider {
       width: 100%;
       z-index: 1;
     }
+  }
+
+  .wiggle-anim {
+    animation: wiggle 300ms infinite;
+  }
+
+  @-webkit-keyframes wiggle {
+    0% { -webkit-transform: translate(1px, 0px); }
+    20% { -webkit-transform: translate(-1px, 0px); }
+    40% { -webkit-transform: translate(1px, 0px); }
+    60% { -webkit-transform: translate(-1px, 0px); }
+    80% { -webkit-transform: translate(1px, 0px); }
+    100% { -webkit-transform: translate(-1px, 0px); }
   }
 }
