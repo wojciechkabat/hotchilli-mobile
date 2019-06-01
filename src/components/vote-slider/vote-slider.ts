@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'vote-slider',
@@ -45,5 +45,9 @@ export class VoteSliderComponent implements OnInit{
       coldIconSize = this.DEFAULT_ICON_SIZE_PX + 0.3*Math.pow((10-currentVoteValue),2);;
     }
     return coldIconSize + 'px';
+  }
+
+  reset() {
+    this.voteValue = 5.0
   }
 }

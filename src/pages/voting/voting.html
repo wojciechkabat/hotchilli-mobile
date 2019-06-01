@@ -19,7 +19,10 @@
 
 <ion-content no-padding>
   <div class="summary-page" *ngIf="votePlaced">
-    <summary [person]="lastVotedPerson" [usersVote]="lastVotedValue"></summary>
+    <summary
+      [person]="lastVotedPerson"
+      [usersVote]="lastVotedValue"
+    (continueClicked)="showNextPerson()"></summary>
   </div>
   <div class="person-card-container">
     <person-card></person-card>
