@@ -5,15 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { RoundProgressModule } from "angular-svg-round-progressbar";
 import { VoteSliderComponent } from "../components/vote-slider/vote-slider";
 import { PersonCardComponent } from "../components/person-card/person-card";
+import { VotingPage } from "../pages/voting/voting";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    VotingPage,
     VoteSliderComponent,
     PersonCardComponent
   ],
@@ -25,7 +25,7 @@ import { PersonCardComponent } from "../components/person-card/person-card";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    VotingPage
   ],
   providers: [
     StatusBar,

@@ -1,10 +1,9 @@
-page-home {
-
+page-voting {
   .toolbar-background {
     @extend .red-gradient
   }
 
-   .person-card-container {
+  .person-card-container {
     height: calc(100vh - 56px - 150px - 50px); //person card should be full screen minus the bar, minus the voteslider and minus some space
     margin-top: 5px;
     margin-left: 5px;
