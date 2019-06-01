@@ -13,9 +13,9 @@ vote-slider {
   }
 
   .range-bar-active {
+    @extend .cold-hot-scale-gradient;
     border-radius: 15px;
     top: 0 !important;
-    background-image: linear-gradient(to right, #2980b9, #6d78c9, #b166bf, #e64e98, #fd495e) !important;
     background-size: 320px auto !important;
   }
 

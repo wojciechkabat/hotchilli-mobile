@@ -14,8 +14,17 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
 .center-column-content {
   display: flex;
   align-items: center;
   justify-content: center
+}
+
+.red-gradient {
+  background-image: linear-gradient(to right top, #fd495e, #fe525b, #fe5b58, #fe6456, #fe6c54);
+}
+
+.cold-hot-scale-gradient {
+  background-image: linear-gradient(to right, #2980b9, #0099c3, #00aeb0, #00be85, #76c84e, #a8c128, #d5b607, #ffa61b, #ff8f2c, #ff773d, #ff5f4e, #fd495e) !important;
 }

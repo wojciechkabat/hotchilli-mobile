@@ -18,10 +18,16 @@ export class VoteSliderComponent implements OnInit{
   constructor() {}
 
   resolveCircleColor(): string {
-    if(this.voteValue > 8) return '#fd495e';
-    if(this.voteValue > 6) return '#e64e98';
-    if(this.voteValue > 4) return '#b166bf';
-    if(this.voteValue > 2) return '#6d78c9';
+    if(this.voteValue > 9) return '#fd495e';
+    if(this.voteValue > 8.5) return '#ff5f4e';
+    if(this.voteValue > 8) return '#ff773d';
+    if(this.voteValue > 7) return '#ff8f2c';
+    if(this.voteValue > 6) return '#ffa61b';
+    if(this.voteValue > 5) return '#d5b607';
+    if(this.voteValue > 4) return '#a8c128';
+    if(this.voteValue > 3) return '#76c84e';
+    if(this.voteValue > 2) return '#00be85';
+    if(this.voteValue > 1) return '#00aeb0';
     return '#2980b9';
   }
 
