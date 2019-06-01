@@ -1,0 +1,2 @@
+<img [hidden]="!isPictureLoaded" [src]="pictureUrl" (load)="this.isPictureLoaded = true;"/>
+<img [hidden]="isPictureLoaded" class="shine image-size"/>

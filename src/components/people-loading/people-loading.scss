@@ -1,0 +1,46 @@
+people-loading {
+ .spinner-container {
+   width: 100%;
+   //background-color: lightgoldenrodyellow;
+   position: relative;
+
+   img {
+     width: 100px;
+     display:block;
+     position: absolute;
+     top: 70px;
+     margin-left: auto;
+     margin-right: auto;
+     left: 0;
+     right: 0;
+     animation: heartbeat 1200ms infinite;
+   }
+
+   .loading-circle {
+     background-color: gray;
+     border-radius: 50%;
+     opacity: 0;
+     width: 150px;
+     height: 150px;
+     position: absolute;
+     top: 50px;
+     margin-left: auto;
+     margin-right: auto;
+     left: 0;
+     right: 0;
+     will-change: scale, opacity;
+     animation: scaleOut 2s infinite cubic-bezier(.36, .11, .89, .32);
+   }
+
+   .searching-text {
+     position: absolute;
+     margin-left: auto;
+     margin-right: auto;
+     left: 0;
+     right: 0;
+     font-size: 2rem;
+     top: 250px;
+     animation: pulse 2400ms infinite;
+   }
+ }
+}

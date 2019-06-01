@@ -7,7 +7,9 @@
     </ion-buttons>
     <ion-title mode="ios">
       <img style="display:inline-block; vertical-align:middle;" height="25px" src="assets/imgs/logo_white_yellow.png"/>
-      <div style="display:inline-block; vertical-align:middle; padding-left: 5px; color: white; font-weight: normal; letter-spacing: 1px">hot<b>chilli</b></div>
+      <div
+        style="display:inline-block; vertical-align:middle; padding-left: 5px; color: white; font-weight: normal; letter-spacing: 1px">
+        hot<b>chilli</b></div>
     </ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="onMenuItemSelected('SettingsPage')">
@@ -18,16 +20,23 @@
 </ion-header>
 
 <ion-content no-padding>
-  <div class="summary-page" *ngIf="votePlaced">
-    <summary
-      [person]="lastVotedPerson"
-      [usersVote]="lastVotedValue"
-    (continueClicked)="showNextPerson()"></summary>
+  <div [hidden]="isLoadingPeople">
+    <div class="summary-page" (click)="showNextPerson()" *ngIf="votePlaced">
+      <summary
+        [person]="currentPerson"
+        [usersVote]="currentVoteValue">
+      </summary>
+    </div>
+
+    <div class="person-card-container">
+      <person-card [person]="currentPerson"></person-card>
+    </div>
+
+    <div class="vote-slider-container">
+      <vote-slider (voteSubmitted)="submitVote($event)"></vote-slider>
+    </div>
   </div>
-  <div class="person-card-container">
-    <person-card></person-card>
-  </div>
-  <div class="vote-slider-container">
-    <vote-slider (voteSubmitted)="submitVote($event)"></vote-slider>
+  <div [hidden]="!isLoadingPeople" class="people-loading-container">
+    <people-loading></people-loading>
   </div>
 </ion-content>

@@ -28,3 +28,68 @@
 .cold-hot-scale-gradient {
   background-image: linear-gradient(to right, #2980b9, #0099c3, #00aeb0, #00be85, #76c84e, #a8c128, #d5b607, #ffa61b, #ff8f2c, #ff773d, #ff5f4e, #fd495e) !important;
 }
+
+.shine {
+  background: #f6f7f8 linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) no-repeat;
+  background-size: 800px 100%;
+  display: inline-block;
+  position: relative;
+
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeholderShimmer;
+  -webkit-animation-timing-function: linear;
+}
+
+.line-size {
+  height: 25px;
+  width: 100%;
+}
+
+
+@-webkit-keyframes placeholderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes scaleOut {
+  0%{
+    transform: scale(.5, .5);
+    opacity: .1;
+  }
+  100% {
+    transform: scale(3, 3);
+    opacity: 0.0;
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  50% { transform: scale(1); }
+  60% { transform: scale(1); }
+  70% { transform: scale(1.05); }
+  80% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@-webkit-keyframes pulse {
+  0% { opacity: 0.1; }
+  10% { opacity: 0.3; }
+  20% { opacity: 0.5; }
+  30% { opacity: 0.7; }
+  40% { opacity: 0.9 }
+  50% { opacity: 1 }
+  60% { opacity: 0.9 }
+  70% { opacity: 0.7 }
+  80% { opacity: 0.5 }
+  90% { opacity: 0.3 }
+  100% { opacity: 0.1; }
+}

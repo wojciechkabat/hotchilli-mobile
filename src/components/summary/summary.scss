@@ -46,14 +46,4 @@ summary {
       color: white;
     }
   }
-
-  @-webkit-keyframes pulse {
-    0% { opacity: 0.4; }
-    20% { opacity: 0.6; }
-    40% { opacity: 0.8 }
-    50% { opacity: 1 }
-    60% { opacity: 0.8 }
-    80% { opacity: 0.6 }
-    100% { opacity: 0.4; }
-  }
 }

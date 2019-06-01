@@ -7,17 +7,10 @@ import { Person } from "../../models/person";
 })
 export class SummaryComponent {
 
-  @HostListener('click')
-  documentClick() {
-    this.continueClicked.emit();
-  }
-
   @Input()
   usersVote: number;
   @Input()
   person: Person;
-  @Output()
-  continueClicked = new EventEmitter();
 
   constructor() {
   }

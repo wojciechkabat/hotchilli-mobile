@@ -11,6 +11,9 @@ import { PersonCardComponent } from "../components/person-card/person-card";
 import { VotingPage } from "../pages/voting/voting";
 import { SummaryComponent } from "../components/summary/summary";
 import { ScoreCircleComponent } from "../components/score-circle/score-circle";
+import { PersonFeederProvider } from "../providers/person-feeder";
+import { PictureAsyncComponent } from "../components/picture-async/picture-async";
+import { PeopleLoadingComponent } from "../components/people-loading/people-loading";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { ScoreCircleComponent } from "../components/score-circle/score-circle";
     VoteSliderComponent,
     PersonCardComponent,
     SummaryComponent,
-    ScoreCircleComponent
+    ScoreCircleComponent,
+    PictureAsyncComponent,
+    PeopleLoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { ScoreCircleComponent } from "../components/score-circle/score-circle";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PersonFeederProvider
   ]
 })
 export class AppModule {}
