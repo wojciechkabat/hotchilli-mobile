@@ -18,10 +18,13 @@
 </ion-header>
 
 <ion-content no-padding>
+  <div class="summary-page" *ngIf="votePlaced">
+    <summary [person]="lastVotedPerson" [usersVote]="lastVotedValue"></summary>
+  </div>
   <div class="person-card-container">
     <person-card></person-card>
   </div>
   <div class="vote-slider-container">
-    <vote-slider></vote-slider>
+    <vote-slider (voteSubmitted)="submitVote($event)"></vote-slider>
   </div>
 </ion-content>

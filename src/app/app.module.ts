@@ -9,13 +9,17 @@ import { RoundProgressModule } from "angular-svg-round-progressbar";
 import { VoteSliderComponent } from "../components/vote-slider/vote-slider";
 import { PersonCardComponent } from "../components/person-card/person-card";
 import { VotingPage } from "../pages/voting/voting";
+import { SummaryComponent } from "../components/summary/summary";
+import { ScoreCircleComponent } from "../components/score-circle/score-circle";
 
 @NgModule({
   declarations: [
     MyApp,
     VotingPage,
     VoteSliderComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    SummaryComponent,
+    ScoreCircleComponent
   ],
   imports: [
     BrowserModule,

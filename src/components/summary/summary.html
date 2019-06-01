@@ -1,0 +1,41 @@
+<div class="summary-container">
+  <div margin-vertical>
+    <ion-row>
+      <ion-col class="person-name full-width" text-center>
+        {{person.name}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="person-age full-width" text-center>
+        {{person.age}} years old
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div margin-vertical>
+    <score-circle [currentValue]="person.averageVote"></score-circle>
+
+    <ion-row>
+      <ion-col class="vote-count-info full-width" text-center>
+        {{person.voteCount}} votes
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div margin-vertical>
+    <ion-row>
+      <ion-col class="your-vote-info full-width" text-center>
+        You voted: {{usersVote}}
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="tap-to-continue-info full-width">
+    <ion-row>
+      <ion-col text-center>
+        Tap the screen to continue
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

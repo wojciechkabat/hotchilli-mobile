@@ -16,4 +16,13 @@ page-voting {
     position: fixed;
     bottom: 20px;
   }
+
+  .summary-page {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+  }
 }

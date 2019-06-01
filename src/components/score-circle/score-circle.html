@@ -1,0 +1,15 @@
+<div class="vote-circle-wrapper">
+  <round-progress
+    [current]="currentValue"
+    [max]="10"
+    [stroke]="25"
+    [color]="resolveCircleColor()"
+    [background]="'#eaeaea'"
+    [rounded]="true"
+    [responsive]="true"
+    [duration]="800"
+    [animation]="'easeInOutQuart'"
+    [animationDelay]="0">
+  </round-progress>
+  <div class="vote-value">{{currentValue | number : '1.1-1'}}</div>
+</div>
