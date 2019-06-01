@@ -24,12 +24,6 @@ export class VotingPage {
     this.votePlaced = false;
     this.lastVotedValue = null;
     this.voteSlider.reset();
-
-    this.lastVotedPerson = new Person();
-    this.lastVotedPerson.name = 'Magdalena';
-    this.lastVotedPerson.age = 23;
-    this.lastVotedPerson.averageVote = 5.5;
-    this.lastVotedPerson.voteCount = 231;
   }
 
   submitVote(voteValue: number) {
@@ -39,7 +33,7 @@ export class VotingPage {
     this.lastVotedPerson = new Person();
     this.lastVotedPerson.name = 'Magdalena';
     this.lastVotedPerson.age = 23;
-    this.lastVotedPerson.averageVote = 5.5;
+    this.lastVotedPerson.averageVote = Math.random() * 10 + 1;
     this.lastVotedPerson.voteCount = 231;
   }
 }
