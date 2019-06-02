@@ -50,15 +50,22 @@ export class VotingPage implements OnInit, OnDestroy {
     this.voteSlider.reset();
   }
 
-  submitVote(voteValue: number) {
+  submitVote(newVote: number) {
+    this.recalculateVoteDataWithNewVote(newVote, this.currentPerson);
+    this.currentVoteValue = newVote;
     this.votePlaced = true;
-    this.currentVoteValue = voteValue;
+
     this.voteService.persistVote(
-      new Vote(this.currentPerson.id, parseFloat(voteValue.toFixed(1)))
+      new Vote(this.currentPerson.id, parseFloat(newVote.toFixed(1)))
     ).subscribe(() => {
     }, (error) => {
       //fixme figure out a mechanism for storing errors and retrying
     });
+  }
+
+  private recalculateVoteDataWithNewVote(newVote: number, person: Person) {
+    this.currentPerson.averageRating = (person.averageRating*person.voteCount + newVote)/(person.voteCount + 1);
+    this.currentPerson.voteCount++;
   }
 
   ngOnDestroy(): void {
