@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Person } from "../../models/person";
 import { VoteSliderComponent } from "../../components/vote-slider/vote-slider";
 import { PersonFeederApiProvider } from "../../providers/person-feeder-api";
+import { Subscription } from "rxjs/Subscription";
 
 @IonicPage()
 @Component({
   selector: 'page-voting',
   templateUrl: 'voting.html',
 })
-export class VotingPage implements OnInit {
+export class VotingPage implements OnInit, OnDestroy {
   currentPerson: Person;
   currentVoteValue: number;
   votePlaced: boolean;
@@ -18,19 +19,26 @@ export class VotingPage implements OnInit {
   @ViewChild(VoteSliderComponent)
   private voteSlider: VoteSliderComponent;
 
-  ngOnInit() {
-    this.personFeeder.onPersonsLoading((isLoading: boolean) => {
-      this.isLoadingPeople = isLoading;
-    });
+  private activeSubscriptions: Subscription[] = [];
 
-    this.personFeeder.onPersonProvided((person: Person) => {
-      this.showNextPerson(person);
-    });
+  ngOnInit() {
+    this.activeSubscriptions.push(
+      this.personFeeder.onPersonsLoading((isLoading: boolean) => {
+        this.isLoadingPeople = isLoading;
+      })
+    );
+
+    this.activeSubscriptions.push(
+      this.personFeeder.onPersonProvided((person: Person) => {
+        this.showNextPerson(person);
+      })
+    );
 
     this.personFeeder.provide();
   }
 
-  constructor(public navCtrl: NavController, public personFeeder: PersonFeederApiProvider) {}
+  constructor(public navCtrl: NavController, public personFeeder: PersonFeederApiProvider) {
+  }
 
   showNextPerson(person: Person) {
     this.votePlaced = false;
@@ -43,5 +51,9 @@ export class VotingPage implements OnInit {
   submitVote(voteValue: number) {
     this.votePlaced = true;
     this.currentVoteValue = voteValue;
+  }
+
+  ngOnDestroy(): void {
+    this.activeSubscriptions.forEach(sub => sub.unsubscribe());
   }
 }
