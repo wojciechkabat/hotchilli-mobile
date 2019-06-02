@@ -16,6 +16,7 @@ import { PeopleLoadingComponent } from "../components/people-loading/people-load
 import { PersonFeederApiProvider } from "../providers/person-feeder-api";
 import { Api } from "../providers/api";
 import { HttpClientModule } from "@angular/common/http";
+import { VoteService } from '../providers/vote-service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HttpClientModule } from "@angular/common/http";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PersonFeederApiProvider,
-    Api
+    Api,
+    VoteService
   ]
 })
 export class AppModule {}

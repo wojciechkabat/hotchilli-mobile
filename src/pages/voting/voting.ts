@@ -4,6 +4,8 @@ import { Person } from "../../models/person";
 import { VoteSliderComponent } from "../../components/vote-slider/vote-slider";
 import { PersonFeederApiProvider } from "../../providers/person-feeder-api";
 import { Subscription } from "rxjs/Subscription";
+import { VoteService } from "../../providers/vote-service";
+import { Vote } from "../../models/vote";
 
 @IonicPage()
 @Component({
@@ -37,7 +39,7 @@ export class VotingPage implements OnInit, OnDestroy {
     this.personFeeder.provide();
   }
 
-  constructor(public navCtrl: NavController, public personFeeder: PersonFeederApiProvider) {
+  constructor(public navCtrl: NavController, public personFeeder: PersonFeederApiProvider, private voteService: VoteService) {
   }
 
   showNextPerson(person: Person) {
@@ -51,6 +53,12 @@ export class VotingPage implements OnInit, OnDestroy {
   submitVote(voteValue: number) {
     this.votePlaced = true;
     this.currentVoteValue = voteValue;
+    this.voteService.persistVote(
+      new Vote(this.currentPerson.id, parseFloat(voteValue.toFixed(1)))
+    ).subscribe(() => {
+    }, (error) => {
+      //fixme figure out a mechanism for storing errors and retrying
+    });
   }
 
   ngOnDestroy(): void {
