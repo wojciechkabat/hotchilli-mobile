@@ -21,7 +21,7 @@
 
 <ion-content no-padding>
   <div [hidden]="isLoadingPeople">
-    <div class="summary-page" (click)="showNextPerson()" *ngIf="votePlaced">
+    <div class="summary-page" (click)="personFeeder.provide()" *ngIf="votePlaced">
       <summary
         [person]="currentPerson"
         [usersVote]="currentVoteValue">

@@ -11,9 +11,11 @@ import { PersonCardComponent } from "../components/person-card/person-card";
 import { VotingPage } from "../pages/voting/voting";
 import { SummaryComponent } from "../components/summary/summary";
 import { ScoreCircleComponent } from "../components/score-circle/score-circle";
-import { PersonFeederProvider } from "../providers/person-feeder";
 import { PictureAsyncComponent } from "../components/picture-async/picture-async";
 import { PeopleLoadingComponent } from "../components/people-loading/people-loading";
+import { PersonFeederApiProvider } from "../providers/person-feeder-api";
+import { Api } from "../providers/api";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { PeopleLoadingComponent } from "../components/people-loading/people-load
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    RoundProgressModule
+    RoundProgressModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,7 +43,8 @@ import { PeopleLoadingComponent } from "../components/people-loading/people-load
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PersonFeederProvider
+    PersonFeederApiProvider,
+    Api
   ]
 })
 export class AppModule {}

@@ -1,8 +1,10 @@
+import { Picture } from "./picture";
+
 export class Person {
   id: number;
-  name: string;
+  username: string;
   age: number;
-  pictureUrls: string[];
+  pictures: Picture[];
   averageVote: number;
   voteCount: number;
 

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { Person } from "../../models/person";
 import { VoteSliderComponent } from "../../components/vote-slider/vote-slider";
-import { PersonFeederProvider } from "../../providers/person-feeder";
+import { PersonFeederApiProvider } from "../../providers/person-feeder-api";
 
 @IonicPage()
 @Component({
@@ -19,23 +19,25 @@ export class VotingPage implements OnInit {
   private voteSlider: VoteSliderComponent;
 
   ngOnInit() {
-    this.showNextPerson();
+    this.personFeeder.onPersonsLoading((isLoading: boolean) => {
+      this.isLoadingPeople = isLoading;
+    });
+
+    this.personFeeder.onPersonProvided((person: Person) => {
+      this.showNextPerson(person);
+    });
+
+    this.personFeeder.provide();
   }
 
-  constructor(public navCtrl: NavController, private personFeeder: PersonFeederProvider) {
+  constructor(public navCtrl: NavController, public personFeeder: PersonFeederApiProvider) {}
 
-  }
-
-  showNextPerson() {
+  showNextPerson(person: Person) {
     this.votePlaced = false;
     this.currentVoteValue = null;
-    this.currentPerson = this.personFeeder.provide();
+    this.currentPerson = person;
 
-    if (this.currentPerson) {
-      this.voteSlider.reset();
-    }
-
-    this.isLoadingPeople = !this.currentPerson;
+    this.voteSlider.reset();
   }
 
   submitVote(voteValue: number) {
