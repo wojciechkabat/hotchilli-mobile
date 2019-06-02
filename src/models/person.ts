@@ -5,7 +5,7 @@ export class Person {
   username: string;
   age: number;
   pictures: Picture[];
-  averageVote: number;
+  averageRating: number;
   voteCount: number;
 
   constructor() {}
