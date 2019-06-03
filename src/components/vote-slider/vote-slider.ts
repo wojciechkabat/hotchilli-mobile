@@ -9,6 +9,8 @@ export class VoteSliderComponent implements OnInit{
   private readonly DEFAULT_ICON_SIZE_PX = 42;
 
   voteValue: number;
+  showSlideToRateInfo: boolean;
+
   @Output()
   private voteSubmitted = new EventEmitter<number>();
 
@@ -48,6 +50,7 @@ export class VoteSliderComponent implements OnInit{
   }
 
   reset() {
+    this.showSlideToRateInfo = false;
     this.voteValue = 5.0
   }
 }

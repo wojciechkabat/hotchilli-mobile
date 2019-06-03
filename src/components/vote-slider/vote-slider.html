@@ -9,8 +9,14 @@
         [style.font-size]="getColdIconSizeValueStyle(voteValue)">
       </ion-icon>
     </ion-col>
-    <ion-col>
-      <score-circle [currentValue]="voteValue"></score-circle>
+    <ion-col text-center style="height: 95px">
+      <div *ngIf="!showSlideToRateInfo" class="slide-to-vote-info">
+        <div>Slide to rate</div>
+        <div class="arrow-animated">
+          <ion-icon name="ios-arrow-down"></ion-icon>
+        </div>
+      </div>
+      <score-circle *ngIf="showSlideToRateInfo" [currentValue]="voteValue"></score-circle>
     </ion-col>
     <ion-col class="center-column-content">
       <ion-icon
@@ -29,6 +35,7 @@
       <ion-range mode="md" min="0" max="100" step="1"
                  [(ngModel)]="10*voteValue"
                  (ngModelChange)="sliderChanged($event)"
+                 (ionFocus)="showSlideToRateInfo = true"
                  (ionBlur)="onVoteSubmitted()">
       </ion-range>
     </ion-col>
