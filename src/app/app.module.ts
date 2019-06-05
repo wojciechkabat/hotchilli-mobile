@@ -5,40 +5,29 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { RoundProgressModule } from "angular-svg-round-progressbar";
-import { VoteSliderComponent } from "../components/vote-slider/vote-slider";
-import { PersonCardComponent } from "../components/person-card/person-card";
-import { VotingPage } from "../pages/voting/voting";
-import { SummaryComponent } from "../components/summary/summary";
-import { ScoreCircleComponent } from "../components/score-circle/score-circle";
-import { PictureAsyncComponent } from "../components/picture-async/picture-async";
-import { PeopleLoadingComponent } from "../components/people-loading/people-loading";
 import { PersonFeederApiProvider } from "../providers/person-feeder-api";
 import { Api } from "../providers/api";
 import { HttpClientModule } from "@angular/common/http";
 import { VoteService } from '../providers/vote-service';
+import { InterceptorModule } from '../providers/my-request-interceptor';
+import { LoginService } from "../providers/loginService";
+import { IonicStorageModule } from "@ionic/storage";
+import { PopupService } from "../providers/popupService";
 
 @NgModule({
   declarations: [
-    MyApp,
-    VotingPage,
-    VoteSliderComponent,
-    PersonCardComponent,
-    SummaryComponent,
-    ScoreCircleComponent,
-    PictureAsyncComponent,
-    PeopleLoadingComponent
+    MyApp
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    RoundProgressModule,
-    HttpClientModule
+    HttpClientModule,
+    InterceptorModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    VotingPage
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -46,7 +35,9 @@ import { VoteService } from '../providers/vote-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PersonFeederApiProvider,
     Api,
-    VoteService
+    VoteService,
+    PopupService,
+    LoginService
   ]
 })
 export class AppModule {}

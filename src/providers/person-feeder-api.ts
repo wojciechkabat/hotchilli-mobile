@@ -23,7 +23,6 @@ export class PersonFeederApiProvider {
       this.personLoadingSubject.next(true);
       this.fetchNextPeople(Constants.NUMBER_OF_PERSONS_IN_SINGLE_CALL).subscribe((persons: Person[]) => {
         persons.forEach(person => this.localPersons.push(person));
-        console.log(this.localPersons)
         this.personFeederSubject.next(this.localPersons.shift());
         this.personLoadingSubject.next(false);
       }, (error) => {
