@@ -1,0 +1,28 @@
+guest-vote-exceeded {
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  img {
+    width: 180px;
+  }
+
+  .text-container {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  .subtext {
+    font-weight: normal;
+  }
+
+  .login-button {
+    margin-top: 20px;
+    width: 100%;
+    letter-spacing: 1px;
+  }
+}

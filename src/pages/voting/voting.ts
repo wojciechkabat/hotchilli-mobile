@@ -6,7 +6,7 @@ import { PersonFeederApiProvider } from "../../providers/person-feeder-api";
 import { Subscription } from "rxjs/Subscription";
 import { VoteService } from "../../providers/vote-service";
 import { Vote } from "../../models/vote";
-import { UserService } from "../../providers/userService";
+import { Constants } from "../../providers/constants";
 
 @IonicPage()
 @Component({
@@ -18,6 +18,7 @@ export class VotingPage implements OnInit, OnDestroy {
   currentVoteValue: number;
   votePlaced: boolean;
   isLoadingPeople: boolean;
+  guestVoteLimitExceeded: boolean;
 
   @ViewChild(VoteSliderComponent)
   private voteSlider: VoteSliderComponent;
@@ -45,12 +46,11 @@ export class VotingPage implements OnInit, OnDestroy {
               private voteService: VoteService) {
   }
 
-  showNextPerson(person: Person) {
-    this.votePlaced = false;
-    this.currentVoteValue = null;
-    this.currentPerson = person;
 
-    this.voteSlider.reset();
+  summaryPageClicked() {
+    if(!this.guestVoteLimitExceeded) {
+      this.personFeeder.provide();
+    }
   }
 
   submitVote(newVote: number) {
@@ -65,8 +65,18 @@ export class VotingPage implements OnInit, OnDestroy {
       )
     ).subscribe(() => {
     }, (error) => {
-      //fixme figure out a mechanism for storing errors and retrying
+      if (error.error.statusCode === Constants.ERROR_CODES.GUEST_VOTE_LIMIT_EXCEEDED) {
+        this.guestVoteLimitExceeded = true;
+      }
     });
+  }
+
+  private showNextPerson(person: Person) {
+    this.votePlaced = false;
+    this.currentVoteValue = null;
+    this.currentPerson = person;
+
+    this.voteSlider.reset();
   }
 
   private recalculateVoteDataWithNewVote(newVote: number, person: Person) {

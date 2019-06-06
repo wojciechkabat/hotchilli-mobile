@@ -20,23 +20,28 @@
 </ion-header>
 
 <ion-content no-padding>
-  <div [hidden]="isLoadingPeople">
-    <div class="summary-page" (click)="personFeeder.provide()" *ngIf="votePlaced">
-      <summary
-        [person]="currentPerson"
-        [usersVote]="currentVoteValue">
-      </summary>
-    </div>
+  <div *ngIf="!guestVoteLimitExceeded">
+    <div [hidden]="isLoadingPeople">
+      <div class="summary-page" (click)="summaryPageClicked()" *ngIf="votePlaced">
+        <summary
+          [person]="currentPerson"
+          [usersVote]="currentVoteValue">
+        </summary>
+      </div>
 
-    <div class="person-card-container">
-      <person-card [person]="currentPerson"></person-card>
-    </div>
+      <div class="person-card-container">
+        <person-card [person]="currentPerson"></person-card>
+      </div>
 
-    <div class="vote-slider-container">
-      <vote-slider (voteSubmitted)="submitVote($event)"></vote-slider>
+      <div class="vote-slider-container">
+        <vote-slider (voteSubmitted)="submitVote($event)"></vote-slider>
+      </div>
+    </div>
+    <div [hidden]="!isLoadingPeople" class="people-loading-container">
+      <people-loading></people-loading>
     </div>
   </div>
-  <div [hidden]="!isLoadingPeople" class="people-loading-container">
-    <people-loading></people-loading>
+  <div *ngIf="guestVoteLimitExceeded" class="guest-vote-exceeded-container">
+    <guest-vote-exceeded></guest-vote-exceeded>
   </div>
 </ion-content>

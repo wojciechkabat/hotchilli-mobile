@@ -6,5 +6,6 @@ export class Constants {
 
   public static ERROR_CODES = {
     UNAUTHENTICATED: 403,
+    GUEST_VOTE_LIMIT_EXCEEDED: 521,
   };
 }

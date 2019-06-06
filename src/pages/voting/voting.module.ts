@@ -8,6 +8,7 @@ import { VoteSliderComponent } from "../../components/vote-slider/vote-slider";
 import { SummaryComponent } from "../../components/summary/summary";
 import { PictureAsyncComponent } from "../../components/picture-async/picture-async";
 import { RoundProgressModule } from "angular-svg-round-progressbar";
+import { GuestVoteExceededComponent } from "../../components/guest-vote-exceeded/guest-vote-exceeded";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RoundProgressModule } from "angular-svg-round-progressbar";
     SummaryComponent,
     ScoreCircleComponent,
     PictureAsyncComponent,
-    PeopleLoadingComponent
+    PeopleLoadingComponent,
+    GuestVoteExceededComponent
   ],
   imports: [
     IonicPageModule.forChild(VotingPage),
