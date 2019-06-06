@@ -6,6 +6,7 @@ import { PersonFeederApiProvider } from "../../providers/person-feeder-api";
 import { Subscription } from "rxjs/Subscription";
 import { VoteService } from "../../providers/vote-service";
 import { Vote } from "../../models/vote";
+import { UserService } from "../../providers/userService";
 
 @IonicPage()
 @Component({
@@ -39,7 +40,9 @@ export class VotingPage implements OnInit, OnDestroy {
     this.personFeeder.provide();
   }
 
-  constructor(public navCtrl: NavController, public personFeeder: PersonFeederApiProvider, private voteService: VoteService) {
+  constructor(public navCtrl: NavController,
+              public personFeeder: PersonFeederApiProvider,
+              private voteService: VoteService) {
   }
 
   showNextPerson(person: Person) {
@@ -56,7 +59,10 @@ export class VotingPage implements OnInit, OnDestroy {
     this.votePlaced = true;
 
     this.voteService.persistVote(
-      new Vote(this.currentPerson.id, parseFloat(newVote.toFixed(1)))
+      new Vote(
+        this.currentPerson.id,
+        parseFloat(newVote.toFixed(1))
+      )
     ).subscribe(() => {
     }, (error) => {
       //fixme figure out a mechanism for storing errors and retrying

@@ -22,9 +22,9 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      this.loginService.loginWithCredentials(new LoginDto()).subscribe(() => {
+      // this.loginService.loginWithCredentials(new LoginDto()).subscribe(() => {
         this.navCtrl.setRoot('VotingPage');
-      });
+      // });
       splashScreen.hide();
     });
 

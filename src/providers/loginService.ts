@@ -5,6 +5,7 @@ import { LoginDto } from "../models/loginDto";
 import { TokensResponseDto } from "../models/tokensResponseDto";
 import { tap } from "rxjs/operators";
 import { Storage } from '@ionic/storage';
+import { UserService } from "./userService";
 
 @Injectable()
 export class LoginService {
@@ -12,6 +13,7 @@ export class LoginService {
   private refreshTokenId: string;
 
   constructor(private storage: Storage,
+              private userService: UserService,
               private apiService: Api) {
 
   }
@@ -23,7 +25,8 @@ export class LoginService {
 
     return this.callApiToLoginWithCredentials(userLoginDto)
       .pipe(
-        tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId))
+        tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId)),
+        tap(() => this.userService.isLoggedIn = true)
       )
   }
 

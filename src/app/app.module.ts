@@ -13,6 +13,7 @@ import { InterceptorModule } from '../providers/my-request-interceptor';
 import { LoginService } from "../providers/loginService";
 import { IonicStorageModule } from "@ionic/storage";
 import { PopupService } from "../providers/popupService";
+import { UserService } from "../providers/userService";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PopupService } from "../providers/popupService";
     Api,
     VoteService,
     PopupService,
+    UserService,
     LoginService
   ]
 })

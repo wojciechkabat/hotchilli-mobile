@@ -5,6 +5,7 @@ import { Api } from "./api";
 import { Subject } from "rxjs/Subject";
 import { Subscription } from "rxjs/Subscription";
 import { Constants } from "./constants";
+import { UserService } from "./userService";
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class PersonFeederApiProvider {
   private personFeederSubject = new Subject<Person>();
   private personLoadingSubject = new Subject<boolean>();
 
-  constructor(private apiService: Api) {
+  constructor(private apiService: Api, private userService: UserService) {
   }
 
   provide() {
@@ -21,7 +22,7 @@ export class PersonFeederApiProvider {
       this.personFeederSubject.next(this.localPersons.shift());
     } else {
       this.personLoadingSubject.next(true);
-      this.fetchNextPeople(Constants.NUMBER_OF_PERSONS_IN_SINGLE_CALL).subscribe((persons: Person[]) => {
+      this.fetchNextPeople().subscribe((persons: Person[]) => {
         persons.forEach(person => this.localPersons.push(person));
         this.personFeederSubject.next(this.localPersons.shift());
         this.personLoadingSubject.next(false);
@@ -31,8 +32,11 @@ export class PersonFeederApiProvider {
     }
   }
 
-  fetchNextPeople(numberOfPeople: number): Observable<Person[]> {
-    return this.apiService.get(`users/random?number=${numberOfPeople}`);
+  fetchNextPeople(): Observable<Person[]> {
+    if (this.userService.isLoggedIn) {
+      return this.apiService.get(`users/random?number=${Constants.NUMBER_OF_PERSONS_IN_SINGLE_CALL}`);
+    }
+    return this.apiService.get(`guest/users/random?number=${Constants.NUMBER_OF_PEOPLE_TO_FETCH_FOR_GUESTS}`)
   }
 
   onPersonProvided(personObserver: ((person: Person) => void)): Subscription {
