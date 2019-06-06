@@ -14,6 +14,7 @@ import { LoginService } from "../providers/loginService";
 import { IonicStorageModule } from "@ionic/storage";
 import { PopupService } from "../providers/popupService";
 import { UserService } from "../providers/userService";
+import { Device } from "@ionic-native/device";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserService } from "../providers/userService";
     VoteService,
     PopupService,
     UserService,
-    LoginService
+    LoginService,
+    Device
   ]
 })
 export class AppModule {}
