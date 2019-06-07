@@ -10,6 +10,7 @@
       <div class="app-logo-text">hot<b>chilli</b></div>
     </div>
     <login-form
-    (loginClicked)="loginWithCredentials($event)"></login-form>
+      [isRequestPending]="isRequestPending"
+      (loginClicked)="loginWithCredentials($event)"></login-form>
   </div>
 </ion-content>

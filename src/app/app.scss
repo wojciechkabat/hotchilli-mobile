@@ -57,9 +57,13 @@
 
 
 .login-page-button {
-  width: 260px;
   @extend .button;
+  width: 260px;
   color: map_get($colors, light)
+}
+
+.heartbeat-animation {
+  animation: heartbeat 1200ms infinite;
 }
 
 

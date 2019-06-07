@@ -9,12 +9,17 @@ import { LoginService } from "../../providers/loginService";
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  isRequestPending: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) {
+  }
 
   loginWithCredentials(loginDto: LoginDto) {
-        this.loginService.loginWithCredentials(loginDto).subscribe(() => {
-          this.navCtrl.setRoot('VotingPage')
-        })
+    this.isRequestPending = true;
+    this.loginService.loginWithCredentials(loginDto).subscribe(() => {
+      this.navCtrl.setRoot('VotingPage')
+    }, () => {
+      this.isRequestPending = false;
+    })
   }
 }
