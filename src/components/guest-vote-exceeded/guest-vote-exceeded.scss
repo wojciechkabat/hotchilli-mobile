@@ -8,7 +8,7 @@ guest-vote-exceeded {
   }
 
   img {
-    width: 180px;
+    width: 160px;
   }
 
   .text-container {
@@ -21,8 +21,7 @@ guest-vote-exceeded {
   }
 
   .login-button {
+    @extend .button;
     margin-top: 20px;
-    width: 100%;
-    letter-spacing: 1px;
   }
 }

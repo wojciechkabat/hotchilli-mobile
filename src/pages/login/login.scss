@@ -1,0 +1,46 @@
+page-login {
+  .toolbar-background {
+    @extend .red-gradient;
+  }
+
+  ion-header .back-button-ios {
+      color: map-get($colors, light);
+  }
+
+  ion-header .back-button-md {
+    color: map-get($colors, light);
+  }
+
+  ion-content {
+    @extend .red-gradient;
+  }
+
+  .scroll-content {
+    padding-bottom: 0 !important;
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .app-logo-text {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 15px;
+    color: white;
+    font-weight: normal;
+    font-size: 4rem;
+    letter-spacing: 1px;
+  }
+
+  .app-logo-image {
+    animation: heartbeat_hard 1200ms infinite;
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+  }
+}

@@ -15,6 +15,7 @@ import { IonicStorageModule } from "@ionic/storage";
 import { PopupService } from "../providers/popupService";
 import { UserService } from "../providers/userService";
 import { Device } from "@ionic-native/device";
+import { MobileAccessibility } from "@ionic-native/mobile-accessibility";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { Device } from "@ionic-native/device";
     PopupService,
     UserService,
     LoginService,
-    Device
+    Device,
+    MobileAccessibility
   ]
 })
 export class AppModule {}

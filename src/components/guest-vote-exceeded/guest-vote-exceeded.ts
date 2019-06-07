@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from "ionic-angular";
 
 @Component({
   selector: 'guest-vote-exceeded',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class GuestVoteExceededComponent {
 
-  constructor() {}
+  constructor(public navCtrl: NavController) {}
 
 }

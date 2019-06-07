@@ -1,0 +1,78 @@
+login-form {
+  ion-input {
+    color: map_get($colors, light);
+    font-weight: lighter;
+    font-size: 1.3em;
+  }
+
+  .item {
+    background-color: transparent;
+    color: white;
+  }
+
+  .input-icon {
+    color: map_get($colors, light);
+    font-size: 1.5em;
+  }
+
+  .text-input::-moz-placeholder {
+    color: white;
+  }
+
+  .text-input:-ms-input-placeholder {
+    color: white;
+  }
+
+  .text-input::-webkit-input-placeholder {
+    color: white;
+  }
+
+  .register-button {
+    color: map_get($colors, dark);
+  }
+
+  .login-with-facebook-button {
+    color: map_get($colors, facebook-blue);
+    position: relative;
+
+    .text-login-facebook {
+      padding-left: 20px;
+    }
+
+    .facebook-icon {
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+    }
+  }
+
+  .or-text {
+    color: map_get($colors, light);
+    font-size: 1em;
+    letter-spacing: 1px;
+    line-height: 0.5;
+  }
+
+  .or-text span {
+    display: inline-block;
+    position: relative;
+  }
+  .or-text span:before,
+  .or-text span:after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    border-bottom: 1px solid white;
+    width: 600%;
+  }
+  .or-text span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .or-text span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+}

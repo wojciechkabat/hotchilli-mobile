@@ -7,6 +7,7 @@ import { VotingPage } from "../pages/voting/voting";
 import { LoginService } from "../providers/loginService";
 import { LoginDto } from "../models/loginDto";
 import { PopupService } from "../providers/popupService";
+import { MobileAccessibility } from "@ionic-native/mobile-accessibility";
 @Component({
   templateUrl: 'app.html'
 })
@@ -17,11 +18,11 @@ export class MyApp {
               splashScreen: SplashScreen,
               private events: Events,
               private popupService: PopupService,
+              private mobileAccessibility: MobileAccessibility,
               private loginService: LoginService) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
+      this.mobileAccessibility.usePreferredTextZoom(false);
       // this.loginService.loginWithCredentials(new LoginDto()).subscribe(() => {
         this.navCtrl.setRoot('VotingPage');
       // });

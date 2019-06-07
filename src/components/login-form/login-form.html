@@ -1,0 +1,67 @@
+<form *ngIf="loginForm" [formGroup]="loginForm">
+  <div padding>
+    <ion-row>
+      <ion-col col-2 class="center-column-content">
+        <ion-icon class="input-icon" name="md-person"></ion-icon>
+      </ion-col>
+      <ion-col col-10 class="center-column-content">
+        <ion-input type="email" email placeholder="Email"
+                   formControlName="login">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2 class="center-column-content">
+        <ion-icon class="input-icon" name="md-lock"></ion-icon>
+      </ion-col>
+      <ion-col col-10 class="center-column-content">
+        <ion-input type="password" placeholder="Password"
+                   clearOnEdit="false"
+                   maxlength="36"
+                   formControlName="password">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div text-center>
+    <button *ngIf="!isRequestPending"
+            class="login-page-button"
+            color="yellow"
+            ion-button
+            round
+            (click)="login()">
+      {{'Login' }}
+    </button>
+    <button *ngIf="!isRequestPending"
+            class="login-page-button login-with-facebook-button"
+            color="light"
+            ion-button
+            icon-left
+            round>
+      <div class="text-login-facebook">{{'Facebook login' }}</div>
+      <ion-icon name="logo-facebook" class="facebook-icon"></ion-icon>
+    </button>
+
+
+    <ion-row margin-top margin-bottom>
+      <ion-col text-center class="or-text">
+        <span>OR</span>
+      </ion-col>
+    </ion-row>
+
+    <button *ngIf="!isRequestPending"
+            class="login-page-button register-button"
+            color="light"
+            ion-button
+            icon-left
+            round>
+      <div>{{'Register' }}</div>
+    </button>
+    <ion-spinner
+      name="dots"
+      color="light"
+      class="spinnerCenter"
+      *ngIf="isRequestPending">
+    </ion-spinner>
+  </div>
+</form>
