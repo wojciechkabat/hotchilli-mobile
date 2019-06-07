@@ -9,9 +9,11 @@ import { PopupService } from "../../providers/popupService";
 export class LoginFormComponent {
   loginForm: FormGroup;
   @Output()
-  private loginClicked = new EventEmitter();
+  loginClicked = new EventEmitter();
   @Output()
-  backClicked = new EventEmitter();
+  loginWithFacebookClicked = new EventEmitter();
+  @Output()
+  registerClicked = new EventEmitter();
   @Input()
   isRequestPending: boolean;
 

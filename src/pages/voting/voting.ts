@@ -76,7 +76,9 @@ export class VotingPage implements OnInit, OnDestroy {
     this.currentVoteValue = null;
     this.currentPerson = person;
 
-    this.voteSlider.reset();
+    if(this.voteSlider) {
+      this.voteSlider.reset();
+    }
   }
 
   private recalculateVoteDataWithNewVote(newVote: number, person: Person) {

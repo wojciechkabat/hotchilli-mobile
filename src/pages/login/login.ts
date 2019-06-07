@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginDto } from "../../models/loginDto";
+import { LoginService } from "../../providers/loginService";
 
 @IonicPage()
 @Component({
@@ -8,6 +10,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) {}
+
+  loginWithCredentials(loginDto: LoginDto) {
+        this.loginService.loginWithCredentials(loginDto).subscribe(() => {
+          this.navCtrl.setRoot('VotingPage')
+        })
   }
 }

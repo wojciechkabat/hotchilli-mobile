@@ -37,6 +37,7 @@
             color="light"
             ion-button
             icon-left
+            (click)="loginWithFacebookClicked.emit()"
             round>
       <div class="text-login-facebook">{{'Facebook login' }}</div>
       <ion-icon name="logo-facebook" class="facebook-icon"></ion-icon>
@@ -54,6 +55,7 @@
             color="light"
             ion-button
             icon-left
+            (click)="registerClicked.emit()"
             round>
       <div>{{'Register' }}</div>
     </button>

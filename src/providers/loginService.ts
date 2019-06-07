@@ -19,9 +19,9 @@ export class LoginService {
   }
 
   loginWithCredentials(userLoginDto: LoginDto): Observable<TokensResponseDto> {
-    userLoginDto.deviceId = 'sadsad'; //fixme mock for now
-    userLoginDto.login = '123@pl.pl';
-    userLoginDto.password = '123456Kk';
+     userLoginDto.deviceId = 'sadsad'; //fixme mock for now
+    // userLoginDto.login = '123@pl.pl';
+    // userLoginDto.password = '123456Kk';
 
     return this.callApiToLoginWithCredentials(userLoginDto)
       .pipe(
