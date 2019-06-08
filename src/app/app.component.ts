@@ -9,6 +9,7 @@ import { PopupService } from "../providers/popupService";
 import { MobileAccessibility } from "@ionic-native/mobile-accessibility";
 import { TokensResponseDto } from "../models/tokensResponseDto";
 import { Storage } from '@ionic/storage';
+import { LoginDto } from "../models/loginDto";
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +31,10 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
       this.mobileAccessibility.usePreferredTextZoom(false);
-      this.navCtrl.setRoot('VotingPage');
+      this.loginService.loginWithCredentials(new LoginDto('123@pl.pl', '123456Kk'))
+        .subscribe(() => {
+          this.navCtrl.setRoot('VotingPage');
+        })
       splashScreen.hide();
     });
 

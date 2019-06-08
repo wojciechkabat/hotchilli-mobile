@@ -4,12 +4,69 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
+<ion-content>
+
+
+  <ion-row margin-top>
+    <ion-col class="center-column-content" col-12 tappable>
+      <div class="picture-and-score-wrapper">
+        <div class="bordered-picture profile-picture-container">
+          <img class="profile-picture-fill"
+               *ngIf="userData && userData.pictures[0]"
+               [src]="userData.pictures[0].url">
+          <img *ngIf="!userData || !userData.pictures[0]"
+               class="profile-picture-fill"
+               src="assets/imgs/user-pic-placeholder.png"/>
+        </div>
+        <score-circle
+          class="score-circle-info"
+          [currentValue]="userData.averageRating"></score-circle>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row margin-bottom>
+    <ion-col text-center>
+      <div *ngIf="userData" class="user-name">{{userData.username}}</div>
+    </ion-col>
+  </ion-row>
+
+  <ion-list mode="ios" no-lines>
     <ion-item>
-      <button ion-button (click)="logout()">
-        Logout
-      </button>
+      <h2 style="margin-bottom: 5px">Display options:</h2>
+      <ion-segment mode="ios" color="hot" [(ngModel)]="pet">
+        <ion-segment-button value="ALL">
+          All
+        </ion-segment-button>
+        <ion-segment-button value="MEN">
+          Men
+        </ion-segment-button>
+        <ion-segment-button value="WOMEN">
+          Women
+        </ion-segment-button>
+      </ion-segment>
     </ion-item>
+
+    <hr>
+
+    <ion-item>
+      <ion-label>
+        <h2>Enable push notifications</h2>
+        <p text-wrap>When enabled you will be receiving notifications</p>
+      </ion-label>
+      <ion-toggle color="hot"></ion-toggle>
+    </ion-item>
+
+    <hr>
+
+    <ion-item tappable (click)="logout()">
+      <ion-label>
+        <h2>Logout</h2>
+      </ion-label>
+    </ion-item>
+
   </ion-list>
+
+
 </ion-content>

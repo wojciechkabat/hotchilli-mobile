@@ -1,3 +1,49 @@
 page-settings {
 
+  .picture-and-score-wrapper {
+    position: relative;
+    height: 150px;
+
+    .profile-picture-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      .profile-picture-fill {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .score-circle-info {
+      position: absolute;
+      bottom:-10px;
+      right: -10px;
+      width: 65px;
+      height: 65px;
+      border-radius: 70px;
+      background-color: white;
+      border: 1.5px solid white;
+      z-index: 2;
+    }
+  }
+
+  .bordered-picture {
+    border: 1.5px solid lightgray;
+    border-radius: 500px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+  }
+
+  .user-name {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  hr {
+    padding: 0;
+    margin: 0 16px;
+  }
 }
