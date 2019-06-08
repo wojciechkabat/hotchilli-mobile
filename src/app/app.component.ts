@@ -31,10 +31,10 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleDefault();
       this.mobileAccessibility.usePreferredTextZoom(false);
-      this.loginService.loginWithCredentials(new LoginDto('123@pl.pl', '123456Kk'))
-        .subscribe(() => {
+      // this.loginService.loginWithCredentials(new LoginDto('123@pl.pl', '123456Kk'))
+      //   .subscribe(() => {
           this.navCtrl.setRoot('VotingPage');
-        })
+        // })
       splashScreen.hide();
     });
 

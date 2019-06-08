@@ -3,14 +3,6 @@ page-login {
     @extend .red-gradient;
   }
 
-  ion-header .back-button-ios {
-      color: map-get($colors, light);
-  }
-
-  ion-header .back-button-md {
-    color: map-get($colors, light);
-  }
-
   ion-content {
     @extend .red-gradient;
   }

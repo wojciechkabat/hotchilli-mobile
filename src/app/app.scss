@@ -66,6 +66,14 @@
   animation: heartbeat 1200ms infinite;
 }
 
+ion-header .back-button-ios {
+  color: map-get($colors, light);
+}
+
+ion-header .back-button-md {
+  color: map-get($colors, light);
+}
+
 
 @-webkit-keyframes placeholderShimmer {
   0% {

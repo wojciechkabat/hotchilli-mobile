@@ -17,7 +17,7 @@ export class SettingsPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private userService: UserService,
+              public userService: UserService,
               private popupService: PopupService,
               private loginService: LoginService) {
     this.userData = this.userService.userData;

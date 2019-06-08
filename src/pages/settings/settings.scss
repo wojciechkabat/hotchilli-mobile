@@ -1,4 +1,7 @@
 page-settings {
+  .toolbar-background {
+    @extend .red-gradient
+  }
 
   .picture-and-score-wrapper {
     position: relative;
@@ -50,5 +53,11 @@ page-settings {
   hr {
     padding: 0;
     margin: 0 16px;
+  }
+
+  .login-button {
+    @extend .button;
+    height: 40px;
+    font-size: 1.5rem;
   }
 }
