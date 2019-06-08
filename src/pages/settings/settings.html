@@ -26,11 +26,34 @@
   </ion-row>
 
 
-  <ion-row margin-bottom>
+  <ion-row>
     <ion-col text-center>
       <div *ngIf="userData" class="user-name">{{userData.username}}</div>
     </ion-col>
   </ion-row>
+
+  <div class="voting-stat-info" margin-bottom>
+    <ion-row *ngIf="userData">
+      <ion-col col-6 text-left no-padding>
+        <div>Your rating:</div>
+      </ion-col>
+      <ion-col col-6 text-right no-padding>
+        <div>{{userData.averageRating}}</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="userData">
+      <ion-col col-6 text-left no-padding>
+        <div>Number of votes:</div>
+      </ion-col>
+      <ion-col col-6 text-right no-padding>
+        <div>{{userData.voteCount}}</div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <hr>
+  <hr>
 
   <ion-list mode="ios" no-lines>
     <ion-item>
