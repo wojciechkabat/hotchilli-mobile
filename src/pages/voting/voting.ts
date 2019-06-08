@@ -7,6 +7,7 @@ import { Subscription } from "rxjs/Subscription";
 import { VoteService } from "../../providers/vote-service";
 import { Vote } from "../../models/vote";
 import { Constants } from "../../providers/constants";
+import { LoginService } from "../../providers/loginService";
 
 @IonicPage()
 @Component({
@@ -42,6 +43,7 @@ export class VotingPage implements OnInit, OnDestroy {
   }
 
   constructor(public navCtrl: NavController,
+              public loginService: LoginService, //fixme remove
               public personFeeder: PersonFeederApiProvider,
               private voteService: VoteService) {
   }
@@ -69,6 +71,10 @@ export class VotingPage implements OnInit, OnDestroy {
         this.guestVoteLimitExceeded = true;
       }
     });
+  }
+
+  openSettings() {
+    this.navCtrl.push('SettingsPage', {}, {animate: true, direction: 'back'})
   }
 
   private showNextPerson(person: Person) {

@@ -23,7 +23,9 @@ import { MobileAccessibility } from "@ionic-native/mobile-accessibility";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      pageTransition: 'ios-transition'
+    }),
     HttpClientModule,
     InterceptorModule,
     IonicStorageModule.forRoot()

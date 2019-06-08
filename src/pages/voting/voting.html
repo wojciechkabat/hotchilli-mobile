@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-navbar>
     <ion-buttons left>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="openSettings()">
         <ion-icon name="md-settings" color="light"></ion-icon>
       </button>
     </ion-buttons>
@@ -12,7 +12,7 @@
         hot<b>chilli</b></div>
     </ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)="onMenuItemSelected('SettingsPage')">
+      <button ion-button icon-only>
         <ion-icon name="md-trophy" color="light"></ion-icon>
       </button>
     </ion-buttons>

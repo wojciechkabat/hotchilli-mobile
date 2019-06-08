@@ -19,9 +19,7 @@ export class LoginService {
   }
 
   loginWithCredentials(userLoginDto: LoginDto): Observable<TokensResponseDto> {
-     userLoginDto.deviceId = 'sadsad'; //fixme mock for now
-    // userLoginDto.login = '123@pl.pl';
-    // userLoginDto.password = '123456Kk';
+    userLoginDto.deviceId = this.userService.deviceId;
 
     return this.callApiToLoginWithCredentials(userLoginDto)
       .pipe(
@@ -30,8 +28,12 @@ export class LoginService {
       )
   }
 
-  logOut(deviceId: string): Observable<void> {
-    return this.apiService.get(`/api/auth/log-out/${deviceId}`);
+  logOut(): Observable<void | {}> {
+    return this.apiService.get(`api/auth/log-out/${this.userService.deviceId}`)
+      .pipe(
+        tap(() => this.clearTokens()),
+        tap(() => this.userService.isLoggedIn = false)
+      )
   }
 
 
