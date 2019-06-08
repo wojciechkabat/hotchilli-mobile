@@ -3,9 +3,10 @@ import { Api } from "./api";
 import { Observable } from "rxjs/Observable";
 import { LoginDto } from "../models/loginDto";
 import { TokensResponseDto } from "../models/tokensResponseDto";
-import { tap } from "rxjs/operators";
+import { flatMap, tap } from "rxjs/operators";
 import { Storage } from '@ionic/storage';
 import { UserService } from "./userService";
+import { Person } from "../models/person";
 
 @Injectable()
 export class LoginService {
@@ -18,21 +19,23 @@ export class LoginService {
 
   }
 
-  loginWithCredentials(userLoginDto: LoginDto): Observable<TokensResponseDto> {
+  loginWithCredentials(userLoginDto: LoginDto): Observable<Person> {
     userLoginDto.deviceId = this.userService.deviceId;
 
     return this.callApiToLoginWithCredentials(userLoginDto)
       .pipe(
         tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId)),
+        flatMap(() => this.userService.getMyInformation()),
         tap(() => this.userService.isLoggedIn = true)
-      )
+      );
   }
 
   logOut(): Observable<void | {}> {
     return this.apiService.get(`api/auth/log-out/${this.userService.deviceId}`)
       .pipe(
         tap(() => this.clearTokens()),
-        tap(() => this.userService.isLoggedIn = false)
+        tap(() => this.userService.isLoggedIn = false),
+        tap(() => this.userService.clearUserData())
       )
   }
 

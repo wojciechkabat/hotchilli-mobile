@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Navbar, NavController, NavParams } from 'ionic-angular';
 import { LoginService } from "../../providers/loginService";
 import { PopupService } from "../../providers/popupService";
+import { UserService } from "../../providers/userService";
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ export class SettingsPage {
   @ViewChild(Navbar) navBar: Navbar;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              private userService: UserService,
               private popupService: PopupService,
               private loginService: LoginService) {
   }
@@ -19,7 +21,8 @@ export class SettingsPage {
   ionViewDidLoad() {
     this.navBar.backButtonClick = (e:UIEvent)=>{
       this.navCtrl.pop({animate: true, direction: 'forward'})
-    }
+    };
+    console.log(this.userService.userData)
   }
 
   logout() {
