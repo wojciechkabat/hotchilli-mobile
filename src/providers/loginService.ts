@@ -25,9 +25,14 @@ export class LoginService {
     return this.callApiToLoginWithCredentials(userLoginDto)
       .pipe(
         tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId)),
-        flatMap(() => this.userService.getMyInformation()),
-        tap(() => this.userService.isLoggedIn = true)
+        flatMap(() => this.continueLogin())
       );
+  }
+
+  continueLogin(): Observable<Person> {
+    return this.userService.getMyInformation().pipe(
+      tap(() => this.userService.isLoggedIn = true)
+    )
   }
 
   logOut(): Observable<void | {}> {
@@ -40,10 +45,10 @@ export class LoginService {
   }
 
 
-  initializeTokens(accessToken: string, refreshTokenId: string) {
+  initializeTokens(accessToken: string, refreshTokenId: string): Promise<void> {
     this.accessToken = accessToken;
     this.refreshTokenId = refreshTokenId;
-    this.storage.set('applicationTokens', {
+    return this.storage.set('applicationTokens', {
       accessToken: this.accessToken,
       refreshTokenId: this.refreshTokenId
     })
