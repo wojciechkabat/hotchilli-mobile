@@ -1,33 +1,43 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, Navbar, NavController, NavParams } from 'ionic-angular';
 import { LoginService } from "../../providers/loginService";
 import { PopupService } from "../../providers/popupService";
 import { UserService } from "../../providers/userService";
 import { Person } from "../../models/person";
+import { LocalSettings } from "../../models/localSettings";
 
 @IonicPage()
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
-export class SettingsPage {
+export class SettingsPage implements OnInit{
   @ViewChild(Navbar) navBar: Navbar;
 
   userData: Person;
+  localSettings: LocalSettings;
+
+
+  ngOnInit(): void {
+    this.userData = this.userService.userData;
+    this.localSettings = { ...this.userService.localSettings};
+  }
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public userService: UserService,
               private popupService: PopupService,
               private loginService: LoginService) {
-    this.userData = this.userService.userData;
-    console.log(this.userData)
   }
 
   ionViewDidLoad() {
     this.navBar.backButtonClick = (e:UIEvent)=>{
       this.navCtrl.pop({animate: true, direction: 'forward'})
     };
+  }
+
+  updateSettings() {
+    this.userService.updateLocalSettings(new LocalSettings(this.localSettings.displayOption))
   }
 
   logout() {

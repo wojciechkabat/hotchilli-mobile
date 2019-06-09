@@ -86,7 +86,7 @@
   <ion-list mode="ios" no-lines>
     <ion-item>
       <h2 style="margin-bottom: 5px">Display options:</h2>
-      <ion-segment mode="ios" color="hot" [(ngModel)]="pet">
+      <ion-segment mode="ios" color="hot" [(ngModel)]="localSettings.displayOption" (ionChange)="updateSettings()">
         <ion-segment-button value="ALL">
           All
         </ion-segment-button>

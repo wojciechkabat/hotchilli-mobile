@@ -1,3 +1,5 @@
+import { LocalSettings } from "../models/localSettings";
+
 export class Constants {
   public static APP_VERSION = '1.0.0';
   public static API_ENDPOINT= 'http://192.168.1.172:8080';
@@ -8,4 +10,8 @@ export class Constants {
     UNAUTHENTICATED: 403,
     GUEST_VOTE_LIMIT_EXCEEDED: 521,
   };
+
+  public static DEFAULT_SETTINGS: LocalSettings = {
+    displayOption: 'ALL'
+  }
 }
