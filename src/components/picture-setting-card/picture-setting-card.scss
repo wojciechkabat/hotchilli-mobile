@@ -1,0 +1,23 @@
+picture-setting-card {
+  display: inline-block;
+  ion-card {
+    height: 275px !important;
+    width: 200px !important;
+    margin-right: 6px !important;
+    border-radius: 20px !important;
+
+    img {
+      height: 275px;
+      overflow: hidden;
+      object-fit: cover;
+    }
+  }
+
+  .no-picture-card {
+    ion-icon {
+      font-size: 10rem;
+      color: map_get($colors, dark);
+    }
+    background-color: lightgray;
+  }
+}

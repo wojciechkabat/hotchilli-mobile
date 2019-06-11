@@ -1,0 +1,22 @@
+page-manage-profile {
+  .toolbar-background {
+    @extend .red-gradient;
+  }
+
+  .toolbar-title {
+    color: white !important;
+  }
+  .picture-scroller {
+    white-space: nowrap;
+    height: 300px;
+  }
+
+  .add-picture-button {
+    margin-left: 12px;
+    margin-right: 12px;
+
+    button {
+      border-radius: 10px;
+    }
+  }
+}

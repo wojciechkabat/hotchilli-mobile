@@ -1,0 +1,11 @@
+<ion-card *ngIf="pictureUrl">
+  <picture-async [pictureUrl]="pictureUrl"></picture-async>
+</ion-card>
+
+<ion-card *ngIf="!pictureUrl" class="no-picture-card" text-center>
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-icon name="md-person"></ion-icon>
+    </ion-row>
+  </ion-grid>
+</ion-card>

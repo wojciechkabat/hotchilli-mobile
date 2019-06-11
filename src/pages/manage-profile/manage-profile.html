@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Manage your profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-scroll scrollX="true" class="picture-scroller">
+    <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url"></picture-setting-card>
+    <picture-setting-card></picture-setting-card>
+  </ion-scroll>
+  <div class="add-picture-button">
+    <button ion-button outline color="hot">Add picture</button>
+  </div>
+</ion-content>
