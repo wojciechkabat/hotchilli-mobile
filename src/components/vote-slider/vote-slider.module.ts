@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { VoteSliderComponent } from "./vote-slider";
+import { ScoreCircleModule } from "../score-circle/score-circle.module";
 
 
 @NgModule({
@@ -8,7 +9,8 @@ import { VoteSliderComponent } from "./vote-slider";
     VoteSliderComponent
   ],
   imports: [
-    IonicPageModule.forChild(VoteSliderComponent)
+    IonicPageModule.forChild(VoteSliderComponent),
+    ScoreCircleModule
   ],
   exports: [
     VoteSliderComponent

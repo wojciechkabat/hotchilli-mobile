@@ -16,7 +16,7 @@ picture-setting-card {
   .no-picture-card {
     ion-icon {
       font-size: 10rem;
-      color: map_get($colors, dark);
+      color: gray;
     }
     background-color: lightgray;
   }

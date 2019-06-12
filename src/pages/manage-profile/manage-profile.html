@@ -6,10 +6,10 @@
 
 <ion-content>
   <ion-scroll scrollX="true" class="picture-scroller">
-    <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url"></picture-setting-card>
-    <picture-setting-card></picture-setting-card>
+    <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url" (click)="showFullScreen(picture.url)"></picture-setting-card>
+    <picture-setting-card (click)="addPicture()"></picture-setting-card>
   </ion-scroll>
   <div class="add-picture-button">
-    <button ion-button outline color="hot">Add picture</button>
+    <button ion-button outline color="hot" (click)="addPicture()">Add picture</button>
   </div>
 </ion-content>

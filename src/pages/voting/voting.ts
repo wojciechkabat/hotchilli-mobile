@@ -8,6 +8,7 @@ import { VoteService } from "../../providers/vote-service";
 import { Vote } from "../../models/vote";
 import { Constants } from "../../providers/constants";
 import { LoginService } from "../../providers/loginService";
+import { BackButtonService } from "../../providers/backButtonService";
 
 @IonicPage()
 @Component({
@@ -43,7 +44,7 @@ export class VotingPage implements OnInit, OnDestroy {
   }
 
   constructor(public navCtrl: NavController,
-              public loginService: LoginService, //fixme remove
+              private backButtonService: BackButtonService,
               public personFeeder: PersonFeederApiProvider,
               private voteService: VoteService) {
   }
@@ -94,5 +95,14 @@ export class VotingPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.activeSubscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+
+  ionViewDidEnter() {
+    this.backButtonService.registerAppExitBackButtonAction();
+  }
+
+  ionViewWillLeave() {
+    this.backButtonService.unregisterCustomBackButtonAction();
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SummaryComponent } from "./summary";
+import { ScoreCircleModule } from "../score-circle/score-circle.module";
 
 
 @NgModule({
@@ -8,7 +9,8 @@ import { SummaryComponent } from "./summary";
     SummaryComponent
   ],
   imports: [
-    IonicPageModule.forChild(SummaryComponent)
+    IonicPageModule.forChild(SummaryComponent),
+    ScoreCircleModule
   ],
   exports: [
     SummaryComponent

@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { GuestVoteExceededComponent } from "./guest-vote-exceeded";
 
 @NgModule({
   declarations: [
-    GuestVoteExceededModule
+    GuestVoteExceededComponent
   ],
   imports: [
-    IonicPageModule.forChild(GuestVoteExceededModule)
+    IonicPageModule.forChild(GuestVoteExceededComponent)
   ],
   exports: [
-    GuestVoteExceededModule
+    GuestVoteExceededComponent
   ]
 })
 export class GuestVoteExceededModule { }

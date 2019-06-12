@@ -5,6 +5,7 @@ export class Constants {
   public static API_ENDPOINT= 'http://192.168.1.172:8080';
   public static NUMBER_OF_PERSONS_IN_SINGLE_CALL= 20;
   public static NUMBER_OF_PEOPLE_TO_FETCH_FOR_GUESTS= 10;
+  public static PICTURE_UPLOAD_ENDPOINT= 'http://sadasd';
 
   public static ERROR_CODES = {
     UNAUTHENTICATED: 403,
