@@ -5,6 +5,7 @@ import { PopupService } from "../../providers/popupService";
 import { UserService } from "../../providers/userService";
 import { Person } from "../../models/person";
 import { LocalSettings } from "../../models/localSettings";
+import { BackButtonService } from "../../providers/backButtonService";
 
 @IonicPage()
 @Component({
@@ -25,13 +26,14 @@ export class SettingsPage implements OnInit{
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              private backButtonService: BackButtonService,
               public userService: UserService,
               private popupService: PopupService,
               private loginService: LoginService) {
   }
 
   ionViewDidLoad() {
-    this.navBar.backButtonClick = (e:UIEvent)=>{
+    this.navBar.backButtonClick = ()=> {
       this.navCtrl.pop({animate: true, direction: 'forward'})
     };
   }
@@ -46,5 +48,15 @@ export class SettingsPage implements OnInit{
       this.popupService.displayToast("Successfully logged out")
       });
     })
+  }
+
+  ionViewDidEnter() {
+    this.backButtonService.registerCustomBackButtonAction(()=> {
+      this.navCtrl.pop({animate: true, direction: 'forward'})
+    });
+  }
+
+  ionViewWillLeave() {
+    this.backButtonService.unregisterCustomBackButtonAction();
   }
 }

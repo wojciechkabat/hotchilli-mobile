@@ -39,6 +39,14 @@ export class BackButtonService {
     }
   }
 
+  registerCustomBackButtonAction(callback: Function) {
+    if (this.isRegistered) {
+      this.unregisterCallback();
+    }
+    this.unregisterCallback = this.platform.registerBackButtonAction(callback);
+    this.isRegistered = true;
+  }
+
   unregisterCustomBackButtonAction() {
     this.unregisterCallback();
     this.isRegistered = false;
