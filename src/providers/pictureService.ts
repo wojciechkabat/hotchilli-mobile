@@ -4,16 +4,20 @@ import {Platform} from "ionic-angular";
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { FileTransferObject, FileTransfer, FileUploadOptions } from "@ionic-native/file-transfer";
+import { Picture } from "../models/picture";
+import { Api } from "./api";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class PictureService {
 
   private fileTransfer: FileTransferObject = this.transfer.create();
-  private picturePreset = 'somePreset';
+  private picturePreset = 'tst_pics';
 
   constructor(private camera: Camera,
               private platform: Platform,
               private photoViewer: PhotoViewer,
+              private apiService: Api,
               private transfer: FileTransfer) {
   }
 
@@ -55,7 +59,7 @@ export class PictureService {
     this.photoViewer.show(pictureUrl);
   }
 
-  uploadImage(picture: any, type: string) {
+  uploadImageToCloudinary(picture: any): Promise<any> {
     let options: FileUploadOptions = {
       params: {'upload_preset': this.picturePreset},
       mimeType: 'image/jpeg',
@@ -63,5 +67,9 @@ export class PictureService {
     };
 
     return this.fileTransfer.upload(picture, Constants.PICTURE_UPLOAD_ENDPOINT, options);
+  }
+
+  persistPictureToBackend(picture: Picture): Promise<any> {
+    return this.apiService.post('pictures', picture).toPromise();
   }
 }

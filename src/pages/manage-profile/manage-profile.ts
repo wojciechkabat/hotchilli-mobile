@@ -28,7 +28,7 @@ export class ManageProfilePage implements OnInit {
   addPicture() {
     let options = [
       {
-        text:'TAKE_NEW_PICTURE_MESSAGE',
+        text: 'TAKE_NEW_PICTURE_MESSAGE',
         icon: 'camera',
         handler: () => this.takePicture()
       },
@@ -48,7 +48,9 @@ export class ManageProfilePage implements OnInit {
 
   takePicture() {
     this.pictureService.takePhoto().then(picture => {
-      this.pictures.push(new Picture(picture))
+      this.uploadPicture(picture).then((picture) => {
+        this.pictures.push(picture)
+      })
     })
       .catch(() => {
         console.log('error taking picture');
@@ -57,11 +59,30 @@ export class ManageProfilePage implements OnInit {
 
   getPictureFromFile() {
     this.pictureService.getImageFromFile().then(picture => {
-      this.pictures.push(new Picture(picture))
+      this.uploadPicture(picture).then((picture) => {
+        this.pictures.push(picture)
+      })
     })
       .catch(() => {
         console.log('error getting picture from file');
       });
+  }
+
+  private uploadPicture(picture: string): Promise<Picture> {
+    const loadingPopup = this.popupService.getLoadingAlertPopup("Uploading picture");
+    loadingPopup.present();
+    const pictureDto = new Picture(null, null);
+
+    return this.pictureService.uploadImageToCloudinary(picture)
+      .then((uploadData) => {
+        pictureDto.url = JSON.parse(uploadData['response'])['url'];
+        pictureDto.externalIdentifier = JSON.parse(uploadData['response'])['public_id'];
+        return this.pictureService.persistPictureToBackend(pictureDto);
+    })
+      .then(() => {
+        loadingPopup.dismiss();
+        return pictureDto;
+      })
   }
 
 }
