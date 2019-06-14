@@ -6,8 +6,8 @@
 
 <ion-content>
   <ion-scroll scrollX="true" class="picture-scroller">
-    <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url" (click)="showFullScreen(picture.url)"></picture-setting-card>
-    <picture-setting-card (click)="addPicture()"></picture-setting-card>
+    <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url" (click)="showPictureOptions(picture)"></picture-setting-card>
+    <picture-setting-card (click)="addPicture()" *ngIf="pictures.length < 4"></picture-setting-card>
   </ion-scroll>
   <div class="add-picture-button">
     <button ion-button outline color="hot" (click)="addPicture()">Add picture</button>

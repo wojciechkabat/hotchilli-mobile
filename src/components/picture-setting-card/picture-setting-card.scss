@@ -1,8 +1,8 @@
 picture-setting-card {
   display: inline-block;
   ion-card {
-    height: 275px !important;
-    width: 200px !important;
+    height: 220px !important;
+    width: 150px !important;
     margin-right: 6px !important;
     border-radius: 20px !important;
 
@@ -15,7 +15,7 @@ picture-setting-card {
 
   .no-picture-card {
     ion-icon {
-      font-size: 10rem;
+      font-size: 8rem;
       color: gray;
     }
     background-color: lightgray;

@@ -72,4 +72,8 @@ export class PictureService {
   persistPictureToBackend(picture: Picture): Promise<any> {
     return this.apiService.post('pictures', picture).toPromise();
   }
+
+  deletePicture(pictureId: number): Observable<void> {
+    return this.apiService.deleteHttp(`pictures/${pictureId}`)
+  }
 }
