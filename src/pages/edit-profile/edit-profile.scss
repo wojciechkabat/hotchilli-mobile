@@ -1,0 +1,18 @@
+page-edit-profile {
+  .toolbar-background {
+    @extend .red-gradient;
+  }
+
+  .toolbar-title {
+    color: white !important;
+  }
+
+  .date-input-value {
+    font-size: 1.6rem;
+  }
+
+  .label-question {
+    font-size: 1.5rem;
+    color: map_get($colors, flat-dark)
+  }
+}

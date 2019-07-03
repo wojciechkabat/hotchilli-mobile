@@ -9,6 +9,7 @@ import { Vote } from "../../models/vote";
 import { Constants } from "../../providers/constants";
 import { LoginService } from "../../providers/loginService";
 import { BackButtonService } from "../../providers/backButtonService";
+import { UserService } from "../../providers/userService";
 
 @IonicPage()
 @Component({
@@ -46,6 +47,7 @@ export class VotingPage implements OnInit, OnDestroy {
   constructor(public navCtrl: NavController,
               private backButtonService: BackButtonService,
               public personFeeder: PersonFeederApiProvider,
+              private userService: UserService,
               private voteService: VoteService) {
   }
 
@@ -100,6 +102,10 @@ export class VotingPage implements OnInit, OnDestroy {
 
   ionViewDidEnter() {
     this.backButtonService.registerAppExitBackButtonAction();
+    if(this.userService.isCompleteRefreshRequired) {
+      this.personFeeder.clearAndProvide();
+      this.userService.isCompleteRefreshRequired = false;
+    }
   }
 
   ionViewWillLeave() {

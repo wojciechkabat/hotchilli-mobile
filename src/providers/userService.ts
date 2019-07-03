@@ -14,6 +14,7 @@ export class UserService {
   deviceId: string;
   userData: Person;
   localSettings: LocalSettings;
+  isCompleteRefreshRequired: boolean;
 
   constructor(private device: Device, private apiService: Api, private storage: Storage) {
     this.deviceId = this.device.platform ? this.device.uuid : 'someMockPcDeviceId';

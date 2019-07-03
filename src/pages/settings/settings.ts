@@ -40,6 +40,7 @@ export class SettingsPage implements OnInit{
 
   updateSettings() {
     this.userService.updateLocalSettings(new LocalSettings(this.localSettings.displayOption))
+    this.userService.isCompleteRefreshRequired = true;
   }
 
   logout() {

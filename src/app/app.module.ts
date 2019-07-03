@@ -21,6 +21,7 @@ import {File} from "@ionic-native/file";
 import { FileTransfer } from '@ionic-native/file-transfer';
 import {PhotoViewer} from "@ionic-native/photo-viewer";
 import { BackButtonService } from "../providers/backButtonService";
+import { DatePicker } from "@ionic-native/date-picker";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { BackButtonService } from "../providers/backButtonService";
     File,
     Device,
     BackButtonService,
-    MobileAccessibility
+    MobileAccessibility,
+    DatePicker
   ]
 })
 export class AppModule {}

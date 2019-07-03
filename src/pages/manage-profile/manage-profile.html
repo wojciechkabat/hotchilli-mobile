@@ -5,11 +5,20 @@
 </ion-header>
 
 <ion-content>
+  <h5 padding-left>Your pictures: </h5>
+
   <ion-scroll scrollX="true" class="picture-scroller">
-    <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url" (click)="showPictureOptions(picture)"></picture-setting-card>
-    <picture-setting-card (click)="addPicture()" *ngIf="pictures.length < 4"></picture-setting-card>
+    <picture-setting-card *ngFor="let picture of userData.pictures" [pictureUrl]="picture.url"
+                          (click)="showPictureOptions(picture)"></picture-setting-card>
+    <picture-setting-card (click)="addPicture()" *ngIf="userData.pictures.length < 4"></picture-setting-card>
   </ion-scroll>
-  <div class="add-picture-button">
+  <div class="button-wrapper">
     <button ion-button outline color="hot" (click)="addPicture()">Add picture</button>
+  </div>
+
+  <h5 padding-left padding-top>Basic information: </h5>
+  <h6 padding-left class="basic-info"> {{userData.username}}, {{userData.age}} years old, Male</h6>
+  <div class="button-wrapper">
+    <button ion-button color="hot" (click)="navCtrl.push('EditProfilePage')">Edit profile information</button>
   </div>
 </ion-content>

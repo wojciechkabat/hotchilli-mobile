@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Edit your data</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="userDataForm" [formGroup]="userDataForm">
+    <div padding>
+      <ion-item no-padding>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" formControlName="username">
+        </ion-input>
+      </ion-item>
+
+      <ion-list radio-group formControlName="sex">
+        <div class="label-question" text-start margin-vertical>Gender</div>
+        <ion-item no-padding>
+          <ion-label>Male</ion-label>
+          <ion-radio value="MALE"></ion-radio>
+        </ion-item>
+        <ion-item no-padding>
+          <ion-label>Female</ion-label>
+          <ion-radio value="FEMALE"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <div class="label-question" text-start margin-vertical>Birthday</div>
+
+      <ion-item no-padding>
+        <div class="date-input-value">
+          <div tappable (click)="showDatePicker()">
+            {{userDataCopy.dateOfBirth | date: 'dd MMMM yyyy'}}
+          </div>
+        </div>
+      </ion-item>
+
+
+    </div>
+  </form>
+</ion-content>

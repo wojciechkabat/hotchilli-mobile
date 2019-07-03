@@ -4,7 +4,6 @@ import { Observable } from "rxjs/Observable";
 import { Api } from "./api";
 import { Subject } from "rxjs/Subject";
 import { Subscription } from "rxjs/Subscription";
-import { Constants } from "./constants";
 import { UserService } from "./userService";
 
 
@@ -15,6 +14,11 @@ export class PersonFeederApiProvider {
   private personLoadingSubject = new Subject<boolean>();
 
   constructor(private apiService: Api, private userService: UserService) {
+  }
+
+  clearAndProvide() {
+    this.localPersons = [];
+    this.provide();
   }
 
   provide() {
@@ -34,9 +38,9 @@ export class PersonFeederApiProvider {
 
   fetchNextPeople(): Observable<Person[]> {
     if (this.userService.isLoggedIn) {
-      return this.apiService.get(`users/random?number=${Constants.NUMBER_OF_PERSONS_IN_SINGLE_CALL}`);
+      return this.apiService.get(`users/random?genderDisplay=${this.userService.localSettings.displayOption}`);
     }
-    return this.apiService.get(`guest/users/random?number=${Constants.NUMBER_OF_PEOPLE_TO_FETCH_FOR_GUESTS}`)
+    return this.apiService.get(`guest/users/random?genderDisplay=${this.userService.localSettings.displayOption}&deviceId=${this.userService.deviceId}`)
   }
 
   onPersonProvided(personObserver: ((person: Person) => void)): Subscription {

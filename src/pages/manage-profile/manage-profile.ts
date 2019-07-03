@@ -4,6 +4,7 @@ import { UserService } from "../../providers/userService";
 import { Picture } from "../../models/picture";
 import { PopupService } from "../../providers/popupService";
 import { PictureService } from "../../providers/pictureService";
+import { Person } from "../../models/person";
 
 @IonicPage()
 @Component({
@@ -12,7 +13,7 @@ import { PictureService } from "../../providers/pictureService";
 })
 export class ManageProfilePage implements OnInit {
 
-  pictures: Picture[];
+  userData: Person;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -22,12 +23,13 @@ export class ManageProfilePage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pictures = this.userService.userData.pictures;
+    this.userData = this.userService.userData;
   }
 
   addPicture() {
-    if (this.pictures.length >= 4) {
-      this.popupService.displayToast('A maximum of 4 pictures is allowed')
+    if (this.userData.pictures.length >= 4) {
+      this.popupService.displayToast('A maximum of 4 pictures is allowed');
+      return;
     }
     let options = [
       {
@@ -77,7 +79,7 @@ export class ManageProfilePage implements OnInit {
         const deleteLoading = this.popupService.getLoadingAlertPopup("Deleting picture...");
         deleteLoading.present();
         this.pictureService.deletePicture(picture.id).subscribe(() => {
-          this.pictures.splice(this.pictures.indexOf(picture),1);
+          this.userData.pictures.splice(this.userData.pictures.indexOf(picture),1);
           deleteLoading.dismiss()
         },() => {
           this.popupService.getInformationAlertPopup("Deletion failed", "Could not delete picture. An error occurred", "OK")
@@ -91,7 +93,7 @@ export class ManageProfilePage implements OnInit {
   takePicture() {
     this.pictureService.takePhoto().then(picture => {
       this.uploadPicture(picture).then((picture) => {
-        this.pictures.push(picture)
+        this.userData.pictures.push(picture)
       })
     })
       .catch(() => {
@@ -102,7 +104,7 @@ export class ManageProfilePage implements OnInit {
   getPictureFromFile() {
     this.pictureService.getImageFromFile().then(picture => {
       this.uploadPicture(picture).then((picture) => {
-        this.pictures.push(picture)
+        this.userData.pictures.push(picture)
       })
     })
       .catch(() => {
