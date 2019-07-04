@@ -55,6 +55,13 @@
   text-transform: none;
 }
 
+.spinnerCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px !important;
+}
+
 
 .login-page-button {
   @extend .button;

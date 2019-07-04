@@ -34,8 +34,11 @@
           </div>
         </div>
       </ion-item>
+    </div>
 
-
+    <div class="button-wrapper">
+      <button ion-button color="hot" (click)="saveChanges()" *ngIf="!isSaving" [disabled]="!userDataForm.dirty">Save changes</button>
+      <ion-spinner name="dots" class="spinnerCenter" *ngIf="isSaving" color="hot"></ion-spinner>
     </div>
   </form>
 </ion-content>

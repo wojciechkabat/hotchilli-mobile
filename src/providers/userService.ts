@@ -7,6 +7,7 @@ import { Person } from "../models/person";
 import { LocalSettings } from "../models/localSettings";
 import { Storage } from "@ionic/storage";
 import { Constants } from "./constants";
+import { UpdateProfileDto } from "../models/updateProfileDto";
 
 @Injectable()
 export class UserService {
@@ -31,6 +32,13 @@ export class UserService {
       .pipe(
         tap((userData: Person) => this.userData = userData)
       )
+  }
+
+  updateProfileInformation(updateProfileDto: UpdateProfileDto): Observable<Person> {
+      return this.apiService.put(`users/me`, updateProfileDto)
+        .pipe(
+          tap((userData: Person) => this.userData = userData)
+        )
   }
 
   clearUserData() {

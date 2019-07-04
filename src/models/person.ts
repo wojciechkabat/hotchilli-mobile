@@ -8,6 +8,7 @@ export class Person {
   pictures: Picture[];
   averageRating: number;
   voteCount: number;
+  gender: string;
 
   constructor() {}
 }

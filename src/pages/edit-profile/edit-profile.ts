@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../providers/userService";
 import { Person } from "../../models/person";
 import { DatePicker } from "@ionic-native/date-picker";
+import { UpdateProfileDto } from "../../models/updateProfileDto";
+import { PopupService } from "../../providers/popupService";
 
 @IonicPage()
 @Component({
@@ -15,17 +17,19 @@ export class EditProfilePage {
   userDataCopy: Person;
 
   minDate: Date;
+  isSaving: boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private formBuilder: FormBuilder,
+              private popupService: PopupService,
               private datePicker: DatePicker,
               private userService: UserService) {
     this.userDataCopy = Object.assign({}, userService.userData);
 
     this.userDataForm = this.formBuilder.group({
       username: [this.userDataCopy.username, Validators.required],
-      sex: ['', Validators.required],
+      sex: [this.userDataCopy.gender, Validators.required],
       birthday: [this.userDataCopy.dateOfBirth]
     });
 
@@ -51,5 +55,20 @@ export class EditProfilePage {
       },
       err => console.log('Error occurred while getting date: ', err)
     );
+  }
+
+  saveChanges() {
+    this.isSaving = true;
+    const formValue = this.userDataForm.value;
+    this.userService.updateProfileInformation(new UpdateProfileDto(formValue.username, formValue.birthday, formValue.sex))
+      .subscribe((person) => {
+        this.isSaving = false;
+        this.navCtrl.pop().then(() => {
+          this.popupService.displayToast('Changes successfully saved')
+        })
+      }, (error) => {
+        console.error(error);
+        this.isSaving = false;
+      })
   }
 }

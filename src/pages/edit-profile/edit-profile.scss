@@ -15,4 +15,13 @@ page-edit-profile {
     font-size: 1.5rem;
     color: map_get($colors, flat-dark)
   }
+
+  .button-wrapper {
+    margin-left: 12px;
+    margin-right: 12px;
+
+    button {
+      border-radius: 10px;
+    }
+  }
 }
