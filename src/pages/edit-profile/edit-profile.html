@@ -8,24 +8,24 @@
   <form *ngIf="userDataForm" [formGroup]="userDataForm">
     <div padding>
       <ion-item no-padding>
-        <ion-label floating>Username</ion-label>
+        <ion-label stacked>Username</ion-label>
         <ion-input type="text" formControlName="username">
         </ion-input>
       </ion-item>
 
-      <ion-list radio-group formControlName="sex">
-        <div class="label-question" text-start margin-vertical>Gender</div>
+      <ion-row radio-group formControlName="sex">
+        <ion-label stacked class="label-form">Gender</ion-label>
         <ion-item no-padding>
-          <ion-label>Male</ion-label>
-          <ion-radio value="MALE"></ion-radio>
+          <ion-label><ion-icon name="male" padding-right></ion-icon>Male</ion-label>
+          <ion-radio color="hot" value="MALE"></ion-radio>
         </ion-item>
         <ion-item no-padding>
-          <ion-label>Female</ion-label>
-          <ion-radio value="FEMALE"></ion-radio>
+          <ion-label><ion-icon name="female" padding-right></ion-icon>Female</ion-label>
+          <ion-radio color="hot" value="FEMALE"></ion-radio>
         </ion-item>
-      </ion-list>
+      </ion-row>
 
-      <div class="label-question" text-start margin-vertical>Birthday</div>
+      <ion-label stacked class="label-form">Birthday</ion-label>
 
       <ion-item no-padding>
         <div class="date-input-value">
@@ -37,7 +37,7 @@
     </div>
 
     <div class="button-wrapper">
-      <button ion-button color="hot" (click)="saveChanges()" *ngIf="!isSaving" [disabled]="!userDataForm.dirty">Save changes</button>
+      <button ion-button class="red-gradient" (click)="saveChanges()" *ngIf="!isSaving" [disabled]="!userDataForm.dirty">Save changes</button>
       <ion-spinner name="dots" class="spinnerCenter" *ngIf="isSaving" color="hot"></ion-spinner>
     </div>
   </form>

@@ -63,6 +63,15 @@ $range-md-bar-height: 30px;
 $range-md-knob-width: 50px;
 $range-md-knob-background-color: #3A537B;
 
+//hiding form input's highlighting
+$text-input-md-highlight-color-invalid: light-darker;
+$text-input-md-highlight-color-valid: light-darker;
+$text-input-md-show-invalid-highlight: light-darker;
+$text-input-md-highlight-color: light-darker;
+$text-input-md-show-valid-highlight: light-darker;
+$text-input-placeholder-color: gray;
+$label-md-text-color-focused: gray;
+
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here

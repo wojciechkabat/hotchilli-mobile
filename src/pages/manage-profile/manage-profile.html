@@ -5,7 +5,21 @@
 </ion-header>
 
 <ion-content>
-  <h5 padding-left>Your pictures: </h5>
+  <h5 padding-left>Basic information: </h5>
+  <ion-row padding-horizontal>
+    <ion-col class="info-title">Username:</ion-col>
+    <ion-col text-end>{{userService.userData.username}},</ion-col>
+  </ion-row>
+  <ion-row padding-horizontal>
+    <ion-col class="info-title">Age:</ion-col>
+    <ion-col text-end>{{userService.userData.age}}</ion-col>
+  </ion-row>
+  <ion-row padding-horizontal>
+    <ion-col class="info-title">Gender:</ion-col>
+    <ion-col text-end>{{userService.userData.gender}}</ion-col>
+  </ion-row>
+
+  <h5 padding-left>Pictures: </h5>
 
   <ion-scroll scrollX="true" class="picture-scroller">
     <picture-setting-card *ngFor="let picture of userService.userData.pictures" [pictureUrl]="picture.url"
@@ -14,11 +28,6 @@
   </ion-scroll>
   <div class="button-wrapper">
     <button ion-button outline color="hot" (click)="addPicture()">Add picture</button>
-  </div>
-
-  <h5 padding-left padding-top>Basic information: </h5>
-  <h6 padding-left class="basic-info"> {{userService.userData.username}}, {{userService.userData.age}} years old, {{userService.userData.gender}}</h6>
-  <div class="button-wrapper">
-    <button ion-button color="hot" (click)="navCtrl.push('EditProfilePage')">Edit profile information</button>
+    <button class="red-gradient" ion-button (click)="navCtrl.push('EditProfilePage')">Edit profile information</button>
   </div>
 </ion-content>
