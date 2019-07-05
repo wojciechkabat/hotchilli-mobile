@@ -11,6 +11,8 @@
     </div>
     <login-form
       [isRequestPending]="isRequestPending"
-      (loginClicked)="loginWithCredentials($event)"></login-form>
+      (loginClicked)="loginWithCredentials($event)">
+    </login-form>
+    <div class="skip-login" margin-top tappable (click)="skipLogin()">Skip login</div>
   </div>
 </ion-content>

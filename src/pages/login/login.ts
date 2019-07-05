@@ -18,6 +18,14 @@ export class LoginPage {
               private loginService: LoginService) {
   }
 
+  skipLogin() {
+    if(this.navCtrl.canGoBack()) {
+      this.navCtrl.pop()
+    } else {
+      this.navCtrl.setRoot('VotingPage')
+    }
+  }
+
   loginWithCredentials(loginDto: LoginDto) {
     this.isRequestPending = true;
     this.loginService.loginWithCredentials(loginDto).subscribe(() => {

@@ -4,6 +4,8 @@ import { UserService } from "../../providers/userService";
 import { Picture } from "../../models/picture";
 import { PopupService } from "../../providers/popupService";
 import { PictureService } from "../../providers/pictureService";
+import { tap } from "rxjs/operators";
+import { LoginService } from "../../providers/loginService";
 
 @IonicPage()
 @Component({
@@ -16,6 +18,7 @@ export class ManageProfilePage {
               public navParams: NavParams,
               private pictureService: PictureService,
               private popupService: PopupService,
+              private loginService: LoginService,
               public userService: UserService) {
   }
 
@@ -103,6 +106,27 @@ export class ManageProfilePage {
       .catch(() => {
         console.log('error getting picture from file');
       });
+  }
+
+  deleteAccountClicked() {
+    const confirmingPopup = this.popupService.getConfirmingAlertPopup(
+      "Confirm account deleting",
+      "Are you sure you want to delete your account? This action is <b>impossible to revert</b>. You will lose your pictures and vote ratings",
+      "Cancel",
+      "Delete",
+      () => {},
+      () => {
+        const deleteLoading = this.popupService.getLoadingAlertPopup("Deleting account...");
+        this.loginService.deleteAccount().subscribe(() => {
+          deleteLoading.dismiss();
+          this.navCtrl.setRoot('VotingPage')
+        }, () => {
+          deleteLoading.dismiss();
+        });
+        deleteLoading.present();
+      }
+    );
+    confirmingPopup.present();
   }
 
   private uploadPicture(picture: string): Promise<Picture> {

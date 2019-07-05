@@ -44,6 +44,14 @@ export class LoginService {
       )
   }
 
+  deleteAccount(): Observable<void | {}> {
+    return this.apiService.deleteHttp('users/me').pipe(
+      tap(() => this.clearTokens()),
+      tap(() => this.userService.isLoggedIn = false),
+      tap(() => this.userService.clearUserData())
+    )
+  }
+
 
   initializeTokens(accessToken: string, refreshTokenId: string): Promise<void> {
     this.accessToken = accessToken;

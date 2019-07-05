@@ -53,7 +53,7 @@ export class MyApp {
           })
         })
       } else {
-        this.navCtrl.setRoot('VotingPage')
+        this.navCtrl.setRoot('LoginPage')
       }
     });
   }
