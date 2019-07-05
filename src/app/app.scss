@@ -138,3 +138,10 @@ ion-header .back-button-md {
   90% { opacity: 0.3 }
   100% { opacity: 0.1; }
 }
+
+  .swiper-slide img {
+    width: 100%;
+    max-height: none;
+    max-width: none;
+    height: -webkit-fill-available;
+  }

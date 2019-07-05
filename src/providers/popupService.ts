@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 import {
   ActionSheetController,
-  AlertController,
+  AlertController, Loading,
   LoadingController,
   ModalController,
   PopoverController, ToastController
 } from "ionic-angular";
+import { LanguageService } from "./languageService";
 
 @Injectable()
 export class PopupService {
+  //this instance had to be created for ios, due to a bug where modal was unresponsive when displayed at the same time as loading.
+  //this caused issues during registration (when modal with PIN was opened), so the instance is necessary to present and hide loader
+  private accountCreationLoadingAlert: Loading;
+
   constructor(private alertCtrl: AlertController,
               private loadingCtrl: LoadingController,
               private popoverCtrl: PopoverController,
               private modalCtrl: ModalController,
               private actionSheetCtrl: ActionSheetController,
+              private languageService: LanguageService,
               private toastController: ToastController,
   ) {
 
@@ -76,6 +82,17 @@ export class PopupService {
     let modal = this.modalCtrl.create(modalComponent);
     modal.onDidDismiss((dismissData) => dismissHandler(dismissData));
     return modal;
+  }
+
+  displayAccountCreationLoading() {
+    this.accountCreationLoadingAlert = this.getLoadingAlertPopup(this.languageService.messages['REGISTERING_ACCOUNT_LOADING_MESSAGE']);
+    this.accountCreationLoadingAlert.present();
+  }
+
+  hideAccountCreationLoading() {
+    if (this.accountCreationLoadingAlert) {
+      this.accountCreationLoadingAlert.dismiss();
+    }
   }
 
   displayToast(message: string) {

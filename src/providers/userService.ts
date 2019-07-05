@@ -8,6 +8,7 @@ import { LocalSettings } from "../models/localSettings";
 import { Storage } from "@ionic/storage";
 import { Constants } from "./constants";
 import { UpdateProfileDto } from "../models/updateProfileDto";
+import { RegistrationDto } from "../models/registrationDto";
 
 @Injectable()
 export class UserService {
@@ -48,5 +49,9 @@ export class UserService {
   updateLocalSettings(localSettings: LocalSettings) {
     this.localSettings = localSettings;
     this.storage.set('localSettings', localSettings);
+  }
+
+  registerAccount(registrationDto: RegistrationDto): Observable<void> {
+    return this.apiService.post('registration', registrationDto)
   }
 }

@@ -1,0 +1,27 @@
+<div class="registration-page-wrapper">
+  <img class="slide-image" src="assets/icon/registration_end.svg"/>
+  <h2 class="slide-title">
+    {{'REGISTRATION_PRIVACY_POLICY_STEP_TITLE' | translate}}
+  </h2>
+  <p text-center>
+    {{'REGISTRATION_PRIVACY_POLICY_STEP_TEXT' | translate}}<br>
+    <a [href]="privacyPolicyService.getPrivacyPolicyLink()">{{'I_HAVE_READ_TAC_ENDING' | translate}} </a>
+  </p>
+</div>
+
+<ion-row justify-content-center>
+  <ion-col col-10>
+    <button round class="registration-button" ion-button color="danger" (click)="nextClicked.next()">
+      {{'REGISTER_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>
+
+<ion-row class="previous-step-button" justify-content-center>
+  <ion-col col-10 text-start>
+    <button ion-button clear icon-left color="danger" (click)="previousClicked.next()" no-padding>
+      <ion-icon name="arrow-back"></ion-icon>
+      {{'PREVIOUS_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>

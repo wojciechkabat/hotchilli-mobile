@@ -7,7 +7,7 @@ import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { PersonFeederApiProvider } from "../providers/person-feeder-api";
 import { Api } from "../providers/api";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { VoteService } from '../providers/vote-service';
 import { InterceptorModule } from '../providers/my-request-interceptor';
 import { LoginService } from "../providers/loginService";
@@ -22,6 +22,21 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import {PhotoViewer} from "@ionic-native/photo-viewer";
 import { BackButtonService } from "../providers/backButtonService";
 import { DatePicker } from "@ionic-native/date-picker";
+import { InputLengthValidatorProvider } from "../providers/inputLengthValidator";
+import { registerLocaleData } from "@angular/common";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import localePl from '@angular/common/locales/pl';
+import { Globalization } from "@ionic-native/globalization";
+import { LanguageService } from "../providers/languageService";
+import { PrivacyPolicyService } from "../providers/privacyPolicy";
+
+//register locale Date for all translated versions of HotChilli
+registerLocaleData(localePl);
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -30,7 +45,15 @@ import { DatePicker } from "@ionic-native/date-picker";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
+      scrollAssist: false,
       pageTransition: 'ios-transition'
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
     }),
     HttpClientModule,
     InterceptorModule,
@@ -58,7 +81,11 @@ import { DatePicker } from "@ionic-native/date-picker";
     Device,
     BackButtonService,
     MobileAccessibility,
-    DatePicker
+    Globalization,
+    DatePicker,
+    InputLengthValidatorProvider,
+    LanguageService,
+    PrivacyPolicyService
   ]
 })
 export class AppModule {}

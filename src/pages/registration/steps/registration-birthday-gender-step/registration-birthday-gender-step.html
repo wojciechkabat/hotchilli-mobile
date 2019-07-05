@@ -1,0 +1,48 @@
+<h2 class="slide-title">{{'REGISTRATION_BIRTHDAY_GENDER_STEP_TITLE' | translate}}</h2>
+<form *ngIf="registrationForm" [formGroup]="registrationForm">
+  <div padding>
+    <ion-list radio-group formControlName="sex">
+      <div class="label-question" text-start margin-vertical>{{'GENDER_INPUT_LABEL' | translate}}</div>
+      <ion-item no-padding>
+        <ion-label><ion-icon name="md-male" padding-right></ion-icon>{{'MALE_LABEL' | translate}}</ion-label>
+        <ion-radio value="MALE" color="hot"></ion-radio>
+      </ion-item>
+      <ion-item no-padding>
+        <ion-label><ion-icon name="md-female" padding-right></ion-icon>{{'FEMALE_LABEL' | translate}}</ion-label>
+        <ion-radio value="FEMALE" color="hot"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <div class="label-question" text-start margin-vertical>{{'BIRTHDAY_INPUT_LABEL' | translate}}</div>
+
+    <ion-item no-padding>
+      <div class="date-input-value">
+        <div tappable (click)="showDatePicker()">
+          {{birthday | date: 'dd MMMM yyyy'}}
+        </div>
+      </div>
+    </ion-item>
+
+
+
+  </div>
+</form>
+
+<div *ngIf="registrationForm.controls['sex'].touched && registrationForm.controls['sex'].errors">
+  <form-error message="{{'GENDER_INPUT_NECESSARY' | translate}}"></form-error>
+</div>
+
+<ion-row justify-content-center>
+  <ion-col col-10>
+    <button round class="registration-button" ion-button color="danger" (click)="nextClicked.next()">
+      {{'NEXT_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>
+
+<ion-row class="previous-step-button" justify-content-center>
+    <button ion-button clear icon-left color="danger" (click)="previousClicked.next()" no-padding>
+      <ion-icon name="arrow-back"></ion-icon>
+      {{'PREVIOUS_BUTTON_TEXT' | translate}}
+    </button>
+</ion-row>

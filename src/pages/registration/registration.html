@@ -1,0 +1,55 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button class="menu-toolbar-icon" ion-button icon-only (click)="abortRegistration()">
+        <ion-icon name="arrow-back" color="light"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title><span>{{'CREATE_ACCOUNT_TITLE' | translate}}</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-slides [pager]="shouldDisplayPager()" #slides class="swiper-no-swiping">
+    <ion-slide>
+      <registration-credentials-step
+        [registrationForm]="registrationForm"
+        (nextClicked)="goToNamesStep()">
+      </registration-credentials-step>
+    </ion-slide>
+
+    <ion-slide>
+      <registration-names-step
+        (nextClicked)="goToBirthdayGenderStep()"
+        (previousClicked)="goToPrevious()"
+        [registrationForm]="registrationForm">
+      </registration-names-step>
+    </ion-slide>
+
+    <ion-slide>
+      <registration-birthday-gender-step
+        [registrationForm]="registrationForm"
+        (previousClicked)="goToPrevious()"
+        (nextClicked)="goToPictureStep()">
+      </registration-birthday-gender-step>
+    </ion-slide>
+
+    <ion-slide>
+      <registration-picture-step
+        (picturesReady)="userPictures = $event"
+        (previousClicked)="goToPrevious()"
+        (nextClicked)="goToPrivacyPolicyStep()"
+        [registrationForm]="registrationForm">
+      </registration-picture-step>
+    </ion-slide>
+
+    <ion-slide>
+      <registration-privacy-policy-step
+        (previousClicked)="goToPrevious()"
+        (nextClicked)="register()">
+      </registration-privacy-policy-step>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

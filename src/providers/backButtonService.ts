@@ -47,6 +47,16 @@ export class BackButtonService {
     this.isRegistered = true;
   }
 
+  registerRegistrationFormBackButtonAction(alert: Alert) {
+    if (this.isRegistered) {
+      this.unregisterCallback();
+    }
+    this.unregisterCallback = this.platform.registerBackButtonAction(() => {
+      alert.present();
+      this.isRegistered = true;
+    })
+  }
+
   unregisterCustomBackButtonAction() {
     this.unregisterCallback();
     this.isRegistered = false;

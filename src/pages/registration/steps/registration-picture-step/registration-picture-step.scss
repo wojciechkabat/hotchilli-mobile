@@ -1,0 +1,14 @@
+registration-picture-step {
+  ion-scroll{
+    height: 250px;
+
+    .scroll-zoom-wrapper{
+      display: inline-flex;
+    }
+  }
+
+  .picture-scroller {
+    white-space: nowrap;
+    height: 250px;
+  }
+}

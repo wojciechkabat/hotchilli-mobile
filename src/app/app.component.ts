@@ -9,6 +9,7 @@ import { PopupService } from "../providers/popupService";
 import { MobileAccessibility } from "@ionic-native/mobile-accessibility";
 import { TokensResponseDto } from "../models/tokensResponseDto";
 import { Storage } from '@ionic/storage';
+import { LanguageService } from "../providers/languageService";
 
 @Component({
   templateUrl: 'app.html'
@@ -22,12 +23,14 @@ export class MyApp {
               private storage: Storage,
               private events: Events,
               private popupService: PopupService,
+              private languageService: LanguageService,
               private mobileAccessibility: MobileAccessibility,
               private loginService: LoginService) {
     this.loginIfTokenAvailable();
 
     platform.ready().then(() => {
       statusBar.styleDefault();
+      this.languageService.initTranslations();
       this.mobileAccessibility.usePreferredTextZoom(false);
       splashScreen.hide();
     });

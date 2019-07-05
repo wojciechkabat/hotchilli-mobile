@@ -11,6 +11,7 @@
     </div>
     <login-form
       [isRequestPending]="isRequestPending"
+      (registerClicked)="navCtrl.push('RegistrationPage')"
       (loginClicked)="loginWithCredentials($event)">
     </login-form>
     <div class="skip-login" margin-top tappable (click)="skipLogin()">Skip login</div>

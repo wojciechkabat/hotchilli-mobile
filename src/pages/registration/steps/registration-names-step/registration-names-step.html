@@ -1,0 +1,34 @@
+<h2 class="slide-title">{{'REGISTRATION_NAMES_STEP_TITLE' | translate}}</h2>
+<form *ngIf="registrationForm" [formGroup]="registrationForm">
+  <div padding>
+    <ion-item no-padding>
+      <ion-input type="text" placeholder="{{'USERNAME_INPUT_LABEL' | translate}}"
+                 (input)="inputLengthValidator.validate($event, 20, registrationForm.controls['username'])"
+                 formControlName="username">
+      </ion-input>
+    </ion-item>
+  </div>
+</form>
+<div *ngIf="registrationForm.controls['username'].touched && registrationForm.hasError('wrongNameOrSurnameFormat')">
+  <form-error message="{{'INCORRECT_NAMES_FORMAT_ERROR_MESSAGE' | translate}}"></form-error>
+</div>
+
+<div *ngIf="registrationForm.controls['username'].touched && registrationForm.controls['username'].errors">
+  <form-error message="{{'NO_USERNAME_ERROR_MESSAGE' | translate}}"></form-error>
+</div>
+<ion-row justify-content-center>
+  <ion-col col-10>
+    <button round class="registration-button" ion-button color="danger" (click)="nextClicked.next()">
+      {{'NEXT_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>
+
+<ion-row class="previous-step-button" justify-content-center>
+  <ion-col col-10 text-start>
+    <button ion-button clear icon-left color="danger" (click)="previousClicked.next()" no-padding>
+      <ion-icon name="arrow-back"></ion-icon>
+      {{'PREVIOUS_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>
