@@ -4,6 +4,7 @@ import { Picture } from "../../../../models/picture";
 import { PopupService } from "../../../../providers/popupService";
 import { PictureService } from "../../../../providers/pictureService";
 import { Scroll, Slides } from "ionic-angular";
+import { LanguageService } from "../../../../providers/languageService";
 
 @Component({
   selector: 'registration-picture-step',
@@ -25,7 +26,7 @@ export class RegistrationPictureStepComponent {
   @Output()
   public picturesReady = new EventEmitter<Picture[]>();
 
-  constructor(private popupService: PopupService, private pictureService: PictureService) {
+  constructor(private popupService: PopupService, private pictureService: PictureService, private languageService: LanguageService) {
   }
 
   goToNextSlide() {
@@ -35,22 +36,22 @@ export class RegistrationPictureStepComponent {
 
   addPicture() {
     if (this.pictures.length >= 4) {
-      this.popupService.displayToast('A maximum of 4 pictures is allowed');
+      this.popupService.displayToast(this.languageService.messages['MAXIMUM_4_PICTURES_ALLOWED_MESSAGE']);
       return;
     }
     let options = [
       {
-        text: 'TAKE_NEW_PICTURE_MESSAGE',
+        text: this.languageService.messages['TAKE_NEW_PICTURE_MESSAGE'],
         icon: 'camera',
         handler: () => this.takePicture()
       },
       {
-        text: 'CHOOSE_EXISTING_PICTURE_MESSAGE',
+        text: this.languageService.messages['CHOOSE_EXISTING_PICTURE_MESSAGE'],
         icon: 'image',
         handler: () => this.getPictureFromFile()
       }
     ];
-    let actionSheet = this.popupService.getActionSheet('CHOOSE_PICTURE_SOURCE_MESSAGE', options);
+    let actionSheet = this.popupService.getActionSheet(this.languageService.messages['CHOOSE_PICTURE_SOURCE_MESSAGE'], options);
     actionSheet.present();
   }
 

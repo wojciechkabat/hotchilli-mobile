@@ -147,6 +147,10 @@ export class RegistrationPage {
   }
 
   goToPrivacyPolicyStep() {
+    if(this.userPictures.length === 0) {
+      this.popupService.displayToast(this.languageService.messages['ADD_AT_LEAST_1_PICTURE_MESSAGE']);
+      return;
+    }
     if (this.registrationForm.valid) {
       this.goToSlide(this.REGISTRATION_STEPS.PRIVACY_POLICY_STEP)
     }

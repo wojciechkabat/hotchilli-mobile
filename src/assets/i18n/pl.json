@@ -40,5 +40,10 @@
   "YES_LABEL": "Tak",
   "NO_LABEL": "Nie",
   "ALREADY_AN_ACCOUNT_WITH_EMAIL_ERROR_MESSAGE": "Konto z podanym adresem email już istnieje",
-  "REGISTRATION_ERROR_MESSAGE": "Nieoczekiwany błąd rejestracji"
+  "REGISTRATION_ERROR_MESSAGE": "Nieoczekiwany błąd rejestracji",
+  "ADD_AT_LEAST_1_PICTURE_MESSAGE": "Dodaj przynajmniej jedno zdjęcie",
+  "MAXIMUM_4_PICTURES_ALLOWED_MESSAGE": "Możesz dodać maksymalnie 4 zdjęcia",
+  "TAKE_NEW_PICTURE_MESSAGE": "Zrób nowe zdjęcie",
+  "CHOOSE_EXISTING_PICTURE_MESSAGE": "Wybierz z galerii",
+  "CHOOSE_PICTURE_SOURCE_MESSAGE": "Wybierz źródło zdjęcia"
 }

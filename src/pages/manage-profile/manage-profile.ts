@@ -6,6 +6,7 @@ import { PopupService } from "../../providers/popupService";
 import { PictureService } from "../../providers/pictureService";
 import { tap } from "rxjs/operators";
 import { LoginService } from "../../providers/loginService";
+import { LanguageService } from "../../providers/languageService";
 
 @IonicPage()
 @Component({
@@ -17,6 +18,7 @@ export class ManageProfilePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private pictureService: PictureService,
+              private languageService: LanguageService,
               private popupService: PopupService,
               private loginService: LoginService,
               public userService: UserService) {
@@ -24,22 +26,22 @@ export class ManageProfilePage {
 
   addPicture() {
     if (this.userService.userData.pictures.length >= 4) {
-      this.popupService.displayToast('A maximum of 4 pictures is allowed');
+      this.popupService.displayToast(this.languageService.messages['MAXIMUM_4_PICTURES_ALLOWED_MESSAGE']);
       return;
     }
     let options = [
       {
-        text: 'TAKE_NEW_PICTURE_MESSAGE',
+        text: this.languageService.messages['TAKE_NEW_PICTURE_MESSAGE'],
         icon: 'camera',
         handler: () => this.takePicture()
       },
       {
-        text: 'CHOOSE_EXISTING_PICTURE_MESSAGE',
+        text: this.languageService.messages['CHOOSE_EXISTING_PICTURE_MESSAGE'],
         icon: 'image',
         handler: () => this.getPictureFromFile()
       }
     ];
-    let actionSheet = this.popupService.getActionSheet('CHOOSE_PICTURE_SOURCE_MESSAGE', options);
+    let actionSheet = this.popupService.getActionSheet(this.languageService.messages['CHOOSE_PICTURE_SOURCE_MESSAGE'], options);
     actionSheet.present();
   }
 

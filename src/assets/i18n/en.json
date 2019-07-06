@@ -1,5 +1,6 @@
 {
   "CREATE_ACCOUNT_TITLE": "Create your account",
+
   "REGISTRATION_WELCOME_STEP_MESSAGE": "We will help you create your account in just a few simple steps",
   "REGISTRATION_NAMES_STEP_TITLE": "What is your name?",
   "USERNAME_INPUT_LABEL": "Name or nickname",
@@ -33,10 +34,16 @@
   "INCORRECT_PASSWORD_FORMAT_ERROR_MESSAGE": "Password must have at least 6 characters and contain at least 1 number and 1 capital letter",
   "INCORRECT_NAMES_FORMAT_ERROR_MESSAGE": "The username must have at least 3 characters",
   "NO_USERNAME_ERROR_MESSAGE": "You have to provide a username",
+
   "CANCEL_ACCOUNT_CREATION_TITLE": "Cancel account creation?",
   "CANCEL_ACCOUNT_CREATION_MESSAGE": "Are you sure you want to cancel creating your account?",
   "YES_LABEL": "Yes",
   "NO_LABEL": "No",
   "ALREADY_AN_ACCOUNT_WITH_EMAIL_ERROR_MESSAGE": "There already exists an account for this email address",
-  "REGISTRATION_ERROR_MESSAGE": "Unexpected registration error"
+  "REGISTRATION_ERROR_MESSAGE": "Unexpected registration error",
+  "ADD_AT_LEAST_1_PICTURE_MESSAGE": "Please add at least 1 picture",
+  "MAXIMUM_4_PICTURES_ALLOWED_MESSAGE": "A maximum of 4 pictures is allowed",
+  "TAKE_NEW_PICTURE_MESSAGE": "Take a new picture",
+  "CHOOSE_EXISTING_PICTURE_MESSAGE": "Choose from gallery",
+  "CHOOSE_PICTURE_SOURCE_MESSAGE": "Choose picture source"
 }
