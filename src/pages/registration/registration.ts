@@ -11,6 +11,7 @@ import { LanguageService } from "../../providers/languageService";
 import { RegistrationDto } from "../../models/registrationDto";
 import { LoginDto } from "../../models/loginDto";
 import { Picture } from "../../models/picture";
+import { Constants } from "../../providers/constants";
 
 @IonicPage()
 @Component({
@@ -196,13 +197,15 @@ export class RegistrationPage {
     if (this.userPictures.length > 0) {
       const uploadPromises: Promise<any>[] = [];
       for (const picture of this.userPictures) {
-        uploadPromises.push(
-          this.pictureService.uploadImageToCloudinary(picture.url)
-            .then((pictureUploadResponse) => {
-              picture.url = JSON.parse(pictureUploadResponse['response'])['url'];
-              picture.externalIdentifier = JSON.parse(pictureUploadResponse['response'])['public_id'];
-            })
-        )
+        if(!picture.externalIdentifier) {
+          uploadPromises.push(
+            this.pictureService.uploadImageToCloudinary(picture.url)
+              .then((pictureUploadResponse) => {
+                picture.url = JSON.parse(pictureUploadResponse['response'])['url'];
+                picture.externalIdentifier = JSON.parse(pictureUploadResponse['response'])['public_id'];
+              })
+          )
+        }
       }
       return Promise.all(uploadPromises)
     } else {
@@ -211,18 +214,13 @@ export class RegistrationPage {
   }
 
   private handleRegistrationError(error) {
-    console.log(error)
-    // if (error && error.error && error.error.statusCode === Constants.ERROR_CODES.USERNAME_TAKEN) {
-    //   this.errorHandlingService.handleErrorToast(this.languageService.messages['ALREADY_AN_ACCOUNT_WITH_EMAIL_ERROR_MESSAGE']);
-    //   this.goToCredentialsStep();
-    // } else if (error == 'CONFIRMATION_PIN_NOT_ENTERED') {
-    //   this.navCtrl.setRoot('WelcomePage').then(() => {
-    //     this.errorHandlingService.handleErrorToast(this.languageService.messages['YOU_HAVE_TO_ACTIVATE_ACCOUNT_MESSAGE']);
-    //   });
-    // }
-    // else {
-    //   this.errorHandlingService.handleErrorToast(this.languageService.messages['REGISTRATION_ERROR_MESSAGE']);
-    // }
+    if (error && error.error && error.error.statusCode === Constants.ERROR_CODES.USERNAME_TAKEN) {
+      this.goToCredentialsStep();
+      this.popupService.displayToast(this.languageService.messages['ALREADY_AN_ACCOUNT_WITH_EMAIL_ERROR_MESSAGE']);
+    }
+    else {
+      this.popupService.displayToast(this.languageService.messages['REGISTRATION_ERROR_MESSAGE']);
+    }
     this.popupService.hideAccountCreationLoading();
   }
 

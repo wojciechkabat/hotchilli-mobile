@@ -38,5 +38,7 @@
   "CANCEL_ACCOUNT_CREATION_TITLE": "Anulować tworzenie konta?",
   "CANCEL_ACCOUNT_CREATION_MESSAGE": "Czy na pewno chcesz anulować tworzenie konta?",
   "YES_LABEL": "Tak",
-  "NO_LABEL": "Nie"
+  "NO_LABEL": "Nie",
+  "ALREADY_AN_ACCOUNT_WITH_EMAIL_ERROR_MESSAGE": "Konto z podanym adresem email już istnieje",
+  "REGISTRATION_ERROR_MESSAGE": "Nieoczekiwany błąd rejestracji"
 }

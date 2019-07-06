@@ -6,6 +6,7 @@ export class Constants {
   public static PICTURE_UPLOAD_ENDPOINT= 'https://api.cloudinary.com/v1_1/hotchillicloud/image/upload';
 
   public static ERROR_CODES = {
+    USERNAME_TAKEN: 421,
     UNAUTHENTICATED: 403,
     GUEST_VOTE_LIMIT_EXCEEDED: 521,
   };
