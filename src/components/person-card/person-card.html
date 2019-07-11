@@ -1,5 +1,12 @@
 <ion-card *ngIf="person">
-  <picture-async [pictureUrl]="person.pictures[0].url"></picture-async>
+  <div class="pictureCounter center-column-content">
+    {{pictureSlider.realIndex + 1}}/{{person.pictures.length}}
+  </div>
+  <ion-slides #pictureSlider [spaceBetween]="10">
+    <ion-slide *ngFor="let picture of person.pictures">
+      <picture-async [pictureUrl]="picture.url" tappable (click)="openFullScreen()"></picture-async>
+    </ion-slide>
+  </ion-slides>
   <ion-card-content>
     <div>
       {{person.username}}, {{person.age}}

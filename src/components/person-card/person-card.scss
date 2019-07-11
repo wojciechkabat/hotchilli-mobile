@@ -3,6 +3,24 @@ person-card {
     width: 100% !important;
     margin: 0 !important;
     height: 100%;
+    position: relative;
+
+    ion-slides {
+      height: calc(100% - 50px);
+      background-color: map_get($colors, light);
+    }
+
+    .pictureCounter {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2;
+      height: 25px;
+      width: 35px;
+      border-radius: 12.5px;
+    }
 
     img {
       overflow: hidden;

@@ -30,6 +30,8 @@ import localePl from '@angular/common/locales/pl';
 import { Globalization } from "@ionic-native/globalization";
 import { LanguageService } from "../providers/languageService";
 import { PrivacyPolicyService } from "../providers/privacyPolicy";
+import * as ionicGalleryModal from 'ionic-gallery-modal';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 
 //register locale Date for all translated versions of HotChilli
 registerLocaleData(localePl);
@@ -57,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     HttpClientModule,
     InterceptorModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ionicGalleryModal.GalleryModalModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,6 +69,10 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: ionicGalleryModal.GalleryModalHammerConfig,
+    },
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PersonFeederApiProvider,
     Api,

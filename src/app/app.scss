@@ -139,6 +139,13 @@ ion-header .back-button-md {
   100% { opacity: 0.1; }
 }
 
+.gallery-modal {
+  .close-button {
+    width: auto;
+    height: auto;
+  }
+}
+
   .swiper-slide img {
     width: 100%;
     max-height: none;
