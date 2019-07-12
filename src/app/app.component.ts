@@ -50,10 +50,9 @@ export class MyApp {
   private loginIfTokenAvailable() {
     this.storage.get('applicationTokens').then((tokens: TokensResponseDto) => {
       if (tokens) {
-        this.loginService.initializeTokens(tokens.accessToken, tokens.refreshTokenId).then(() => {
-          this.loginService.continueLogin().subscribe(() => {
-            this.navCtrl.setRoot('VotingPage');
-          })
+        this.loginService.initializeTokens(tokens.accessToken, tokens.refreshTokenId);
+        this.loginService.continueLogin().subscribe(() => {
+          this.navCtrl.setRoot('VotingPage');
         })
       } else {
         this.navCtrl.setRoot('LoginPage')

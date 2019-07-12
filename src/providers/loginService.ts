@@ -6,7 +6,8 @@ import { TokensResponseDto } from "../models/tokensResponseDto";
 import { flatMap, tap } from "rxjs/operators";
 import { Storage } from '@ionic/storage';
 import { UserService } from "./userService";
-import { Person } from "../models/person";
+import { PopupService } from "./popupService";
+import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Injectable()
 export class LoginService {
@@ -15,23 +16,44 @@ export class LoginService {
 
   constructor(private storage: Storage,
               private userService: UserService,
+              private popupService: PopupService,
               private apiService: Api) {
 
   }
 
-  loginWithCredentials(userLoginDto: LoginDto): Observable<Person> {
+  loginWithCredentials(userLoginDto: LoginDto) {
     userLoginDto.deviceId = this.userService.deviceId;
 
     return this.callApiToLoginWithCredentials(userLoginDto)
       .pipe(
         tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId)),
-        flatMap(() => this.continueLogin())
+        flatMap(() => this.userService.isAccountActive()),
+        flatMap((isAccountActive) => {
+          if (isAccountActive) {
+            return this.continueLogin();
+          }
+          return fromPromise(this.askForPinAccountConfirmation())
+            .pipe(
+              flatMap(
+                () => this.continueLogin(),
+                (error) => Observable.throw(error)
+              )
+            )
+        })
       );
   }
 
-  continueLogin(): Observable<Person> {
+  continueLogin(): Observable<any> {
     return this.userService.getMyInformation().pipe(
-      tap(() => this.userService.isLoggedIn = true)
+      tap(() => {
+        this.userService.isLoggedIn = true;
+        this.storage.set('applicationTokens', {
+          accessToken: this.accessToken,
+          refreshTokenId: this.refreshTokenId
+        });
+        //if logging in after confirming account with pin
+        this.popupService.hideAccountCreationLoading();
+      })
     )
   }
 
@@ -53,13 +75,9 @@ export class LoginService {
   }
 
 
-  initializeTokens(accessToken: string, refreshTokenId: string): Promise<void> {
+  initializeTokens(accessToken: string, refreshTokenId: string) {
     this.accessToken = accessToken;
     this.refreshTokenId = refreshTokenId;
-    return this.storage.set('applicationTokens', {
-      accessToken: this.accessToken,
-      refreshTokenId: this.refreshTokenId
-    })
   }
 
   clearTokens() {
@@ -82,5 +100,20 @@ export class LoginService {
 
   private callApiToLoginWithCredentials(loginDto: LoginDto): Observable<TokensResponseDto> {
     return this.apiService.post('login', loginDto);
+  }
+
+  private askForPinAccountConfirmation(): Promise<string> {
+    this.popupService.hideAccountCreationLoading();
+    return new Promise((resolve, reject) => {
+      const accountConfirmModal = this.popupService.getModal(
+        'PinAccountConfirmPage',
+        (isConfirmed) => {
+          if(isConfirmed) {
+            this.popupService.displayAccountCreationLoading();
+          }
+          return isConfirmed ? resolve() : reject('CONFIRMATION_PIN_NOT_ENTERED')
+        });
+      accountConfirmModal.present();
+    })
   }
 }

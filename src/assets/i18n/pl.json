@@ -45,5 +45,19 @@
   "MAXIMUM_4_PICTURES_ALLOWED_MESSAGE": "Możesz dodać maksymalnie 4 zdjęcia",
   "TAKE_NEW_PICTURE_MESSAGE": "Zrób nowe zdjęcie",
   "CHOOSE_EXISTING_PICTURE_MESSAGE": "Wybierz z galerii",
-  "CHOOSE_PICTURE_SOURCE_MESSAGE": "Wybierz źródło zdjęcia"
+  "CHOOSE_PICTURE_SOURCE_MESSAGE": "Wybierz źródło zdjęcia",
+
+  "YOU_HAVE_TO_ACTIVATE_ACCOUNT_MESSAGE": "Musisz aktywować konto, aby móc się zalogować",
+  "COULD_NOT_LOGIN_TEXT": "Nie udało się zalogować",
+
+  "EMAIL_CONFIRMATION_TITLE": "Potwierdź email",
+  "ACCOUNT_CONFIRM_TEXT1": "Jeszcze jeden krok",
+  "ACCOUNT_CONFIRM_TEXT2": "To już ostatnia rzecz, jaką musisz zrobić. Aby aktywować konto, musisz potwierdzić swój adres email, wpisując PIN, który Ci wysłaliśmy.",
+  "ENTER_YOUR_PIN": "Wprowadź PIN",
+  "SEND_EMAIL_AGAIN": "Wyślij e-mail ponownie",
+  "SEND_EMAIL_AGAIN_CONFIRM_MESSAGE": "Czy na pewno chcesz ponownie wysłać email z potwierdzającym konto PINem?",
+  "CANCEL_MESSAGE": "Anuluj",
+  "CONFIRM_MESSAGE": "Potwierdź",
+  "WRONG_PIN_TITLE": "Nieprawidłowy PIN",
+  "WRONG_PIN_MESSAGE": "Podany numer PIN jest nieprawidłowy."
 }

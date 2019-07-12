@@ -3,7 +3,7 @@ import {
   ActionSheetController,
   AlertController, Loading,
   LoadingController,
-  ModalController,
+  ModalController, ModalOptions,
   PopoverController, ToastController
 } from "ionic-angular";
 import { LanguageService } from "./languageService";

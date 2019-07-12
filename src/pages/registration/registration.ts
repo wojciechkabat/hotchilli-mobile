@@ -75,7 +75,6 @@ export class RegistrationPage {
   register() {
     if (this.registrationForm.valid) {
       this.popupService.displayAccountCreationLoading();
-      console.log(this.registrationForm.value)
       this.handlePictureUploadIfNecessary().then(() => {
         const registrationDto: RegistrationDto = {
           username: this.registrationForm.value.username.trim(),
@@ -221,6 +220,10 @@ export class RegistrationPage {
     if (error && error.error && error.error.statusCode === Constants.ERROR_CODES.USERNAME_TAKEN) {
       this.goToCredentialsStep();
       this.popupService.displayToast(this.languageService.messages['ALREADY_AN_ACCOUNT_WITH_EMAIL_ERROR_MESSAGE']);
+    } else if (error == 'CONFIRMATION_PIN_NOT_ENTERED') {
+      this.navCtrl.setRoot('LoginPage').then(() => {
+        this.popupService.displayToast(this.languageService.messages['YOU_HAVE_TO_ACTIVATE_ACCOUNT_MESSAGE']);
+      });
     }
     else {
       this.popupService.displayToast(this.languageService.messages['REGISTRATION_ERROR_MESSAGE']);

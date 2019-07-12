@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-row>
+      <ion-col col-2 col-lg-1 class="center-column-content">
+        <img style="max-height: 40px" src="assets/imgs/logo_white_yellow.png"/>
+      </ion-col>
+      <ion-col class="center-column-content">
+        <ion-title><div class="toolbar-title-md modal-title">{{'EMAIL_CONFIRMATION_TITLE' | translate}}</div></ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="pin-modal-wrapper">
+    <div style="flex-grow: 1;">
+      <h4>{{'ACCOUNT_CONFIRM_TEXT1' | translate}}</h4>
+
+      <div class="modal-text">
+        {{'ACCOUNT_CONFIRM_TEXT2' | translate}}
+      </div>
+    </div>
+    <div style="flex-grow: 1">
+      <form *ngIf="confirmationForm" [formGroup]="confirmationForm">
+        <ion-item no-padding>
+          <ion-input text-center type="tel" maxlength="4" placeholder="{{'ENTER_YOUR_PIN' | translate}}"
+                     style="font-size: 2.5rem"
+                     formControlName="confirmationPin"></ion-input>
+        </ion-item>
+      </form>
+
+      <ion-row margin-top="80px" padding class="send-again-text">
+        <ion-col *ngIf="!isResendingMail" tappable text-center (click)="resendEmail()">
+          {{'SEND_EMAIL_AGAIN' | translate | uppercase}}
+        </ion-col>
+        <ion-spinner
+          class="spinnerCenter"
+          name="dots"
+          *ngIf="isResendingMail">
+        </ion-spinner>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="red-background">
+  <ion-row>
+    <ion-col col-6 text-center>
+      <button
+        ion-button
+        icon-start
+        clear
+        class="cancel-button"
+        (click)="viewCtrl.dismiss(false);">
+        <ion-icon name="close"></ion-icon>
+        {{'CANCEL_MESSAGE' | translate}}
+      </button>
+    </ion-col>
+
+    <ion-col col-6 text-center>
+      <ion-spinner
+        name="dots"
+        color="light"
+        *ngIf="isDataLoading">
+      </ion-spinner>
+      <button
+        ion-button
+        icon-start
+        [disabled]="!confirmationForm.value.confirmationPin || confirmationForm.value.confirmationPin.length !== 4"
+        clear
+        class="confirm-button"
+        *ngIf="!isDataLoading"
+        (click)="confirmPin()">
+        <ion-icon name="checkmark"></ion-icon>
+        {{'CONFIRM_MESSAGE' | translate}}
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+

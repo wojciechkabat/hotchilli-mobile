@@ -45,5 +45,19 @@
   "MAXIMUM_4_PICTURES_ALLOWED_MESSAGE": "A maximum of 4 pictures is allowed",
   "TAKE_NEW_PICTURE_MESSAGE": "Take a new picture",
   "CHOOSE_EXISTING_PICTURE_MESSAGE": "Choose from gallery",
-  "CHOOSE_PICTURE_SOURCE_MESSAGE": "Choose picture source"
+  "CHOOSE_PICTURE_SOURCE_MESSAGE": "Choose picture source",
+
+  "YOU_HAVE_TO_ACTIVATE_ACCOUNT_MESSAGE": "You have to activate your account in order to log in.",
+  "COULD_NOT_LOGIN_TEXT": "Could not log in",
+
+  "EMAIL_CONFIRMATION_TITLE": "Email confirmation",
+  "ACCOUNT_CONFIRM_TEXT1": "You are a step away",
+  "ACCOUNT_CONFIRM_TEXT2": "There is just one last thing we need to do before we can let you in. Please confirm your email with the PIN code that we sent to you.",
+  "ENTER_YOUR_PIN": "Enter your PIN",
+  "SEND_EMAIL_AGAIN": "Send email again",
+  "SEND_EMAIL_AGAIN_CONFIRM_MESSAGE": "Are you sure that you want us to send your confirmation email again?",
+  "CANCEL_MESSAGE": "Cancel",
+  "CONFIRM_MESSAGE": "Confirm",
+  "WRONG_PIN_TITLE": "Wrong PIN number",
+  "WRONG_PIN_MESSAGE": "The PIN number that you entered is not correct."
 }

@@ -28,6 +28,14 @@ export class UserService {
     }
   }
 
+  isAccountActive(): Observable<boolean> {
+    return this.apiService.get(`account/active`)
+  }
+
+  confirmAccount(pin: string): Observable<void> {
+    return this.apiService.put('registration/confirmation', pin);
+  }
+
   getMyInformation(): Observable<Person> {
     return this.apiService.get(`users/me`)
       .pipe(
