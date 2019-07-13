@@ -83,6 +83,7 @@ export class RegistrationPage {
           pictures: this.userPictures,
           gender: this.registrationForm.value.sex,
           dateOfBirth: this.registrationForm.value.birthday,
+          languageCode: this.languageService.getUserLocaleLanguage()
         };
 
         this.userService.registerAccount(registrationDto).pipe(

@@ -51,8 +51,4 @@ export class LanguageService {
     const browserLang = this.translateService.getBrowserLang();
     return browserLang? browserLang : 'en';
   }
-
-  getUserLocaleCountry() {
-    return this.userLocaleCountry;
-  }
 }

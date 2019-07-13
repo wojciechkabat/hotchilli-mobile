@@ -6,5 +6,6 @@ export interface RegistrationDto {
   password: string,
   pictures: Picture[],
   gender: string,
-  dateOfBirth: Date
+  dateOfBirth: Date,
+  languageCode: string
 }
