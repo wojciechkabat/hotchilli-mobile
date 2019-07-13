@@ -36,6 +36,10 @@ export class UserService {
     return this.apiService.put('registration/confirmation', pin);
   }
 
+  resendConfirmationEmail(): Observable<void> {
+    return this.apiService.get('registration/confirmation/resend');
+  }
+
   getMyInformation(): Observable<Person> {
     return this.apiService.get(`users/me`)
       .pipe(

@@ -59,5 +59,6 @@
   "CANCEL_MESSAGE": "Anuluj",
   "CONFIRM_MESSAGE": "Potwierdź",
   "WRONG_PIN_TITLE": "Nieprawidłowy PIN",
-  "WRONG_PIN_MESSAGE": "Podany numer PIN jest nieprawidłowy."
+  "WRONG_PIN_MESSAGE": "Podany numer PIN jest nieprawidłowy.",
+  "SEND_MESSAGE": "Wyślij"
 }

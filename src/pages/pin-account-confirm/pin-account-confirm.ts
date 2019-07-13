@@ -47,24 +47,24 @@ export class PinAccountConfirmPage {
   }
 
   resendEmail() {
-    // let alert = this.popupService.getConfirmingAlertPopup(
-    //   this.languageService.messages['SEND_EMAIL_AGAIN'],
-    //   this.languageService.messages['SEND_EMAIL_AGAIN_CONFIRM_MESSAGE'],
-    //   this.languageService.messages['CANCEL_MESSAGE'],
-    //   this.languageService.messages['SEND_MESSAGE'],
-    //   null,
-    //   () => {
-    //     this.isResendingMail = true;
-    //     this.userService.resendConfirmationEmail().subscribe(() => {
-    //         this.isResendingMail = false;
-    //         this.popupService.displayToast(this.languageService.messages['EMAIL_RESENT_SUCCESS_MESSAGE'])
-    //       },
-    //       () => {
-    //         this.isResendingMail = false;
-    //         this.popupService.displayToast(this.languageService.messages['EMAIL_RESENT_ERROR_MESSAGE'])
-    //       }
-    //     );
-    //   });
-    // alert.present();
+    let alert = this.popupService.getConfirmingAlertPopup(
+      this.languageService.messages['SEND_EMAIL_AGAIN'],
+      this.languageService.messages['SEND_EMAIL_AGAIN_CONFIRM_MESSAGE'],
+      this.languageService.messages['CANCEL_MESSAGE'],
+      this.languageService.messages['SEND_MESSAGE'],
+      null,
+      () => {
+        this.isResendingMail = true;
+        this.userService.resendConfirmationEmail().subscribe(() => {
+            this.isResendingMail = false;
+            this.popupService.displayToast(this.languageService.messages['EMAIL_RESENT_SUCCESS_MESSAGE'])
+          },
+          () => {
+            this.isResendingMail = false;
+            this.popupService.displayToast(this.languageService.messages['EMAIL_RESENT_ERROR_MESSAGE'])
+          }
+        );
+      });
+    alert.present();
   }
 }
