@@ -8,6 +8,9 @@ import { Storage } from '@ionic/storage';
 import { UserService } from "./userService";
 import { PopupService } from "./popupService";
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import { FacebookProvider } from "./facebookProvider";
+import { LanguageService } from "./languageService";
+import { HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class LoginService {
@@ -17,8 +20,18 @@ export class LoginService {
   constructor(private storage: Storage,
               private userService: UserService,
               private popupService: PopupService,
+              private languageService: LanguageService,
+              private facebookProvider: FacebookProvider,
               private apiService: Api) {
 
+  }
+
+  loginWithFacebook() {
+    return fromPromise(this.facebookProvider.loginToFacebook()).pipe(
+      flatMap((fbAccessToken) => this.callApiToLoginWithFacebook(fbAccessToken)),
+      tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId)),
+      flatMap(() => this.continueLogin())
+    )
   }
 
   loginWithCredentials(userLoginDto: LoginDto) {
@@ -100,6 +113,15 @@ export class LoginService {
 
   private callApiToLoginWithCredentials(loginDto: LoginDto): Observable<TokensResponseDto> {
     return this.apiService.post('login', loginDto);
+  }
+
+  private callApiToLoginWithFacebook(fbAccessToken: string): Observable<TokensResponseDto> {
+    const headers = new HttpHeaders({'fb-access-token': fbAccessToken});
+    const facebookLoginDto = {
+      languageCode: this.languageService.getUserLocaleLanguage(),
+      deviceId: this.userService.deviceId
+    };
+    return this.apiService.post('loginFB', facebookLoginDto, headers);
   }
 
   private askForPinAccountConfirmation(): Promise<string> {

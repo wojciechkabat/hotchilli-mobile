@@ -32,6 +32,8 @@ import { LanguageService } from "../providers/languageService";
 import { PrivacyPolicyService } from "../providers/privacyPolicy";
 import * as ionicGalleryModal from 'ionic-gallery-modal';
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { FacebookProvider } from '../providers/facebookProvider';
+import { Facebook } from "@ionic-native/facebook";
 
 //register locale Date for all translated versions of HotChilli
 registerLocaleData(localePl);
@@ -90,6 +92,8 @@ export function createTranslateLoader(http: HttpClient) {
     MobileAccessibility,
     Globalization,
     DatePicker,
+    Facebook,
+    FacebookProvider,
     InputLengthValidatorProvider,
     LanguageService,
     PrivacyPolicyService

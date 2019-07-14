@@ -21,11 +21,24 @@ export class LoginPage {
   }
 
   skipLogin() {
-    if(this.navCtrl.canGoBack()) {
+    if (this.navCtrl.canGoBack()) {
       this.navCtrl.pop()
     } else {
       this.navCtrl.setRoot('VotingPage')
     }
+  }
+
+  loginWithFacebook() {
+    this.isRequestPending = true;
+    this.loginService.loginWithFacebook().subscribe(() => {
+        this.navCtrl.setRoot('VotingPage').then(() => {
+          this.popupService.displayToast(`Logged in with Facebook`)
+        })
+      },
+      (error) => {
+        this.isRequestPending = false;
+        this.popupService.displayToast(this.languageService.messages['COULD_NOT_LOGIN_TEXT']);
+      });
   }
 
   loginWithCredentials(loginDto: LoginDto) {
