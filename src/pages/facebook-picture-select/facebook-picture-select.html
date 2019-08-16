@@ -1,0 +1,36 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button class="menu-toolbar-icon" ion-button icon-only (click)="viewCtrl.dismiss(null)">
+        <ion-icon name="arrow-back" color="light"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title><span>{{'CHOOSE_FACEBOOK_PICTURE' | translate}}</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isFetchingPhotos">
+    <ion-spinner name="dots" class="spinnerCenter" color="hot"></ion-spinner>
+    <div class="fetching-photos-text">
+      <div text-center>{{'FETCHING_FACEBOOK_PICTURES' | translate}}</div>
+    </div>
+  </div>
+
+  <ion-row *ngIf="!isFetchingPhotos">
+    <ion-col col-6>
+      <div *ngFor="let photo of facebookPhotos; let i = index">
+        <div style="margin-bottom: 3px" *ngIf="i%2===0">
+          <picture-async [pictureUrl]="photo.source" (click)="pictureSelected(photo)"></picture-async>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div *ngFor="let photo of facebookPhotos; let i = index">
+        <div style="margin-bottom: 3px" *ngIf="i%2!==0">
+          <picture-async [pictureUrl]="photo.source" (click)="pictureSelected(photo)"></picture-async>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button class="menu-toolbar-icon" ion-button icon-only (click)="abortRegistration()">
+        <ion-icon name="arrow-back" color="light"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title><span>{{'FINISH_FACEBOOK_REGISTRATION_TITLE' | translate}}</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-slides [pager]="shouldDisplayPager()" #slides class="swiper-no-swiping">
+    <ion-slide>
+      <registrationfb-data-step
+        (nextClicked)="goToPictureStep()"
+        [registrationForm]="registrationForm">
+      </registrationfb-data-step>
+    </ion-slide>
+
+
+    <ion-slide>
+      <registrationfb-picture-step
+        (picturesReady)="userPictures = $event"
+        (previousClicked)="goToPrevious()"
+        (nextClicked)="goToPrivacyPolicyStep()"
+        [registrationForm]="registrationForm">
+      </registrationfb-picture-step>
+    </ion-slide>
+
+    <ion-slide>
+      <registration-privacy-policy-step
+        (previousClicked)="goToPrevious()"
+        (nextClicked)="register()">
+      </registration-privacy-policy-step>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

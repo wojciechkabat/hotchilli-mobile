@@ -1,0 +1,27 @@
+<div class="registration-page-wrapper" style="margin-top: 15px">
+  <h2 class="slide-title">
+    {{'REGISTRATION_PICTURE_STEP_TITLE' | translate}}
+  </h2>
+</div>
+
+<ion-scroll scrollX="true" class="picture-scroller">
+  <picture-setting-card *ngFor="let picture of pictures" [pictureUrl]="picture.url"
+                        (click)="showPictureOptions(picture)"></picture-setting-card>
+  <picture-setting-card (click)="addPicture()" *ngIf="pictures.length < 4"></picture-setting-card>
+</ion-scroll>
+
+  <ion-row justify-content-center>
+  <ion-col col-10>
+    <button round class="registration-button" ion-button color="danger" (click)="goToNextSlide()">
+      {{'NEXT_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>
+<ion-row class="previous-step-button" justify-content-center>
+  <ion-col col-10 text-start>
+    <button ion-button clear icon-left color="danger" (click)="previousClicked.next()" no-padding>
+      <ion-icon name="arrow-back"></ion-icon>
+      {{'PREVIOUS_BUTTON_TEXT' | translate}}
+    </button>
+  </ion-col>
+</ion-row>

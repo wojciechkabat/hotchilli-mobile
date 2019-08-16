@@ -146,6 +146,12 @@ ion-header .back-button-md {
   }
 }
 
+.facebook-icon {
+  ion-icon {
+    color: map_get($colors, facebook-blue)
+  }
+}
+
   .swiper-slide img {
     width: 100%;
     max-height: none;

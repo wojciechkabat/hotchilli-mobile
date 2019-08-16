@@ -1,5 +1,6 @@
 {
   "CREATE_ACCOUNT_TITLE": "Create your account",
+  "FINISH_FACEBOOK_REGISTRATION_TITLE": "Complete registration",
 
   "REGISTRATION_WELCOME_STEP_MESSAGE": "We will help you create your account in just a few simple steps",
   "REGISTRATION_NAMES_STEP_TITLE": "What is your name?",
@@ -46,6 +47,7 @@
   "TAKE_NEW_PICTURE_MESSAGE": "Take a new picture",
   "CHOOSE_EXISTING_PICTURE_MESSAGE": "Choose from gallery",
   "CHOOSE_PICTURE_SOURCE_MESSAGE": "Choose picture source",
+  "CHOOSE_PICTURE_FROM_FACEBOOK": "Choose from Facebook",
 
   "YOU_HAVE_TO_ACTIVATE_ACCOUNT_MESSAGE": "You have to activate your account in order to log in.",
   "COULD_NOT_LOGIN_TEXT": "Could not log in",
@@ -60,5 +62,7 @@
   "CONFIRM_MESSAGE": "Confirm",
   "WRONG_PIN_TITLE": "Wrong PIN number",
   "WRONG_PIN_MESSAGE": "The PIN number that you entered is not correct.",
-  "SEND_MESSAGE": "Send"
+  "SEND_MESSAGE": "Send",
+  "CHOOSE_FACEBOOK_PICTURE": "Choose picture",
+  "FETCHING_FACEBOOK_PICTURES": "Fetching your Facebook pictures"
 }

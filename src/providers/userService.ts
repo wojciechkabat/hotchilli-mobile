@@ -9,6 +9,7 @@ import { Storage } from "@ionic/storage";
 import { Constants } from "./constants";
 import { UpdateProfileDto } from "../models/updateProfileDto";
 import { RegistrationDto } from "../models/registrationDto";
+import { FacebookPostRegistrationDto } from "../models/facebookPostRegistrationDto";
 
 @Injectable()
 export class UserService {
@@ -52,6 +53,10 @@ export class UserService {
         .pipe(
           tap((userData: Person) => this.userData = userData)
         )
+  }
+
+  postRegisterFacebookUser(postRegistrationDto: FacebookPostRegistrationDto): Observable<void> {
+    return this.apiService.put('registration/post-fb', postRegistrationDto);
   }
 
   clearUserData() {

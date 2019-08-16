@@ -1,0 +1,10 @@
+registration-birthday-gender-step {
+  .date-input-value {
+          font-size: 1.6rem;
+        }
+
+  .label-question {
+    font-size: 1.5rem;
+    color: map_get($colors, flat-dark)
+  }
+}

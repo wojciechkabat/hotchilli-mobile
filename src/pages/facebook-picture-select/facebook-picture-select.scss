@@ -1,0 +1,17 @@
+page-facebook-picture-select {
+  .toolbar-background {
+    @extend .red-gradient;
+  }
+
+  .toolbar-title {
+    color: white !important;
+  }
+
+  .fetching-photos-text {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
+    margin-top: 20px;
+    animation: pulse 2400ms infinite;
+  }
+}

@@ -30,7 +30,20 @@ export class LoginService {
     return fromPromise(this.facebookProvider.loginToFacebook()).pipe(
       flatMap((fbAccessToken) => this.callApiToLoginWithFacebook(fbAccessToken)),
       tap((tokens: TokensResponseDto) => this.initializeTokens(tokens.accessToken, tokens.refreshTokenId)),
-      flatMap(() => this.continueLogin())
+      flatMap(() => this.userService.isAccountActive()),
+      flatMap((isActive) => {
+        if (isActive) {
+          return this.continueLogin()
+        } else {
+          return fromPromise(this.displayFacebookRegistrationForm())
+            .pipe(
+              flatMap(
+                () => this.continueLogin(),
+                (error) => Observable.throw(error)
+              )
+            )
+        }
+      })
     )
   }
 
@@ -130,12 +143,29 @@ export class LoginService {
       const accountConfirmModal = this.popupService.getModal(
         'PinAccountConfirmPage',
         (isConfirmed) => {
-          if(isConfirmed) {
+          if (isConfirmed) {
             this.popupService.displayAccountCreationLoading();
           }
           return isConfirmed ? resolve() : reject('CONFIRMATION_PIN_NOT_ENTERED')
-        });
+        },
+        {});
       accountConfirmModal.present();
+    })
+  }
+
+  private displayFacebookRegistrationForm(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.userService.getMyInformation().subscribe(userData => {
+        const accountConfirmModal = this.popupService.getModal(
+          'RegistrationFBPage',
+          (isRegistered) => {
+            return isRegistered ? resolve() : reject('FB_REGISTRATION_ABORTED')
+          },
+          {
+            userData: userData
+          });
+        accountConfirmModal.present();
+      }, (error) => reject(error))
     })
   }
 }

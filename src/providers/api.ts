@@ -20,6 +20,10 @@ export class Api {
     return this.http.get<T>(this.url + '/' + endpoint, {params: requestParams, responseType: 'json'});
   }
 
+  getWithHeaders<T>(endpoint: string, headers?: HttpHeaders) : Observable<T> {
+    return this.http.get<T>(this.url + '/' + endpoint, {headers: headers, responseType: 'json'});
+  }
+
   post<T>(endpoint: string, body: any, headers?: HttpHeaders): Observable<T> {
     return this.http.post<T>(this.url + '/' + endpoint, body, {headers: headers ,responseType: 'json'});
   }
@@ -30,5 +34,9 @@ export class Api {
 
   deleteHttp<T>(endpoint: string): Observable<T> {
     return this.http.delete<T>(this.url + '/' + endpoint, {responseType: 'json'});
+  }
+
+  postExternal<T>(absoluteEndpoint: string, body: any, headers?: HttpHeaders): Observable<T> {
+    return this.http.post<T>(absoluteEndpoint, body, {headers: headers ,responseType: 'json'});
   }
 }

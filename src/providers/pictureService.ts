@@ -65,8 +65,14 @@ export class PictureService {
       mimeType: 'image/jpeg',
       httpMethod: 'post'
     };
-
     return this.fileTransfer.upload(picture, Constants.PICTURE_UPLOAD_ENDPOINT, options);
+  }
+
+  uploadRemoteUrlImageToCloudinary(pictureRemoteUrl: string): Promise<any> {
+    return this.apiService.postExternal(Constants.PICTURE_UPLOAD_ENDPOINT, {
+      file: pictureRemoteUrl,
+      upload_preset: this.picturePreset
+    }).toPromise();
   }
 
   persistPictureToBackend(picture: Picture): Promise<any> {

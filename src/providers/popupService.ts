@@ -78,8 +78,8 @@ export class PopupService {
     });
   }
 
-  getModal(modalComponent, dismissHandler) {
-    let modal = this.modalCtrl.create(modalComponent);
+  getModal(modalComponent, dismissHandler, data) {
+    let modal = this.modalCtrl.create(modalComponent, data);
     modal.onDidDismiss((dismissData) => dismissHandler(dismissData));
     return modal;
   }
